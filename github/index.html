@@ -275,6 +275,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#commits-manipulations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Commits manipulations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Commits manipulations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#go-back-to-a-commit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Go back to a commit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edit-commits-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Edit commit's information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#workflows" class="md-nav__link">
     <span class="md-ellipsis">
       Workflows
@@ -297,6 +330,15 @@
   <a href="#yaml-file-structure" class="md-nav__link">
     <span class="md-ellipsis">
       Yaml file structure
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions secrets
     </span>
   </a>
   
@@ -327,8 +369,47 @@
 
 <h1 id="github">Github</h1>
 <h2 id="generate-new-ssh-key">Generate new ssh key</h2>
-<pre><code>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
+<pre><code>$ ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
 </code></pre>
+<hr />
+<h2 id="commits-manipulations">Commits manipulations</h2>
+<h3 id="go-back-to-a-commit">Go back to a commit</h3>
+<p>Go back to a commit with staged changes with the following command :</p>
+<pre><code>$ git reset --soft &lt;commit hash&gt;
+</code></pre>
+<p>Go back to a commit without the staged changes with the following command :</p>
+<pre><code>$ git reset --hard &lt;commit hash&gt;
+</code></pre>
+<p>Notes that a force-pushing will will be required to override the history.</p>
+<h3 id="edit-commits-information">Edit commit's information</h3>
+<p><strong>Updating the last Commit</strong></p>
+<p>You can change your past commit information such as author, message, etc..</p>
+<pre><code>$ git commit --amend
+</code></pre>
+<p>The command above loads the previous commit message into an editor session, where you can make changes to the message, save those changes and exit. When you save and close the editor, the editor writes a new commit containing that updated commit message and makes it your new last commit.</p>
+<p><strong>Updating Multiple Commits</strong></p>
+<p>To modify multiple commits, combine <code>commit --amend</code> with <code>rebase</code>:</p>
+<pre><code>$ git rebase -i &lt;commit hash&gt;
+</code></pre>
+<p>When using interactive rebase, you will be presented with a list of commits. You can choose actions (commands) to apply to each commit. To amend a commit, use the <code>edit</code> command.</p>
+<p>After saving and exiting the interactive editor, Git will stop at the commit marked for editing. You might see something like this:</p>
+<pre><code>$ git rebase -i HEAD~3
+Stopped at f7f3f6d... Change my name a bit
+You can amend the commit now, with
+
+       git commit --amend
+
+Once you're satisfied with your changes, run
+
+       git rebase --continue
+</code></pre>
+<p>Repeat the process for each <code>edit</code> until the rebase is complete.</p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Force-pushing (<code>git push --force</code>) will be required after amending and rebasing.</li>
+<li><code>&lt;commit hash&gt;</code> can be replaced by <code>HEAD~x</code> (e.g. <code>HEAD~3</code>) to get the last <code>x</code> commits.</li>
+</ul>
+<hr />
 <h2 id="workflows">Workflows</h2>
 <p>GitHub workflows are automated processes defined in YAML files that enable developers to streamline tasks such as code building, testing, deployment, and custom automation based on events like code pushes or pull requests.</p>
 <h3 id="structure">Structure</h3>
@@ -407,6 +488,10 @@ jobs:
       run: ./configure
 
 </code></pre>
+<h3 id="actions-secrets">Actions secrets</h3>
+<p>Secrets and variables allow you to manage reusable configuration data. Secrets are encrypted and are used for sensitive data.</p>
+<p>You can found your secrets at <code>Your Repository overview</code> -&gt; <code>Settings</code> -&gt; <code>Secrets and Variables</code> -&gt; <code>Actions</code>.</p>
+<p>To call a secret you have to use this syntaxe : <code>${{ secrets.YOUR_SECRET }}</code>.</p>
 <p>More documentation on <a href="https://docs.github.com/en/actions/writing-workflows">github</a>.</p>
 
 
