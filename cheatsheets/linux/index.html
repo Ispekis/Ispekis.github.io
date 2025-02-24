@@ -283,6 +283,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#file-permissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      File permissions
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -308,7 +317,6 @@
 </code></pre>
 <p>Modify the system's name permanently</p>
 <pre><code>hostnamectl set-hostname demo.example.com
-
 </code></pre>
 <p>You can confirm this entry by displaying the <code>/etc/hostname</code> file contents.</p>
 <h2 id="set-static-ip-address">Set static ip address</h2>
@@ -325,6 +333,24 @@ iface ethX inet static
 <p>Restart networking:</p>
 <pre><code>sudo systemctl restart networking
 </code></pre>
+<h2 id="file-permissions">File permissions</h2>
+<pre><code>drwxr-xr-x 2 owner group *.*K ****-**-** **:** docs
+-rw-r--r-- 1 owner group *.*K ****-**-** **:** document.txt
+lrwxrwxrwx 2 owner group *.*K ****-**-** **:** team.docs
+</code></pre>
+<p>File type ; User ; Group ; Everyone</p>
+<p>File types :</p>
+<ul>
+<li><code>d</code> Directory</li>
+<li><code>-</code> Regular file</li>
+<li><code>l</code> Symbolic Link</li>
+</ul>
+<p>Permissions digits :</p>
+<ul>
+<li><code>r</code> (read): 4</li>
+<li><code>w</code> (write): 2</li>
+<li><code>x</code> (execute): 1</li>
+</ul>
 
 
 
