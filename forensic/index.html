@@ -320,8 +320,35 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#checksum-date-archive" class="md-nav__link">
+    <span class="md-ellipsis">
+      Checksum &amp; Date &amp; Archive
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-of-forensic" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps of forensic
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Linux
+    </span>
+  </a>
   
 </li>
       
@@ -354,10 +381,54 @@
 <li><code>Volatility</code> - The Volatility Framework is a completely open collection of tools, implemented in Python under the GNU General Public License, for the extraction of digital artifacts from volatile memory (RAM) samples.</li>
 </ul>
 <h3 id="dd">dd</h3>
+<p><a href="https://github.com/coreutils/coreutils/blob/master/src/dd.c">Source</a> | <a href="../assets/dd.7z">Download</a></p>
+<pre><code>dd.exe if=\\?\Device\Harddisk(X)\Partition0 of=Z:\disk.raw --progress bs=17408
+</code></pre>
 <h3 id="winpmem">WinPmem</h3>
+<p><a href="https://github.com/Velocidex/WinPmem">Source</a> | <a href="../assets/winpmem_x64.7z">Download</a></p>
+<pre><code>winpmem.exe --output memory_dump.raw
+</code></pre>
 <h3 id="testdisk">TestDisk</h3>
+<p><a href="https://github.com/cgsecurity/testdisk">Source</a></p>
+<pre><code>sudo apt install testdisk
+</code></pre>
 <h3 id="photorec">PhotoRec</h3>
+<p><a href="https://github.com/cgsecurity/testdisk">Source</a></p>
+<pre><code>sudo apt install testdisk
+</code></pre>
 <h3 id="volatility">Volatility</h3>
+<p><a href="https://github.com/volatilityfoundation/volatility.git">Source</a></p>
+<pre><code>git clone https://github.com/volatilityfoundation/volatility.git
+sudo wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+sudo apt install python2.7 python2.7-dev
+sudo python2.7 get-pip.py
+sudo python2.7 -m pip install --upgrade setuptools
+sudo python2.7 -m pip install pycrypto
+sudo python2.7 -m pip install distorm3==3.4.4
+</code></pre>
+<h3 id="checksum-date-archive">Checksum &amp; Date &amp; Archive</h3>
+<pre><code>md5sum &lt;file&gt; &amp;&amp; date
+sha256sum &lt;file&gt; &amp;&amp; date
+zip -r -0 &lt;archive_name&gt;.zip &lt;file_to_zip&gt;
+tar -cf &lt;archive_name&gt;.tar &lt;file_to_zip&gt;
+</code></pre>
+<h2 id="steps-of-forensic">Steps of forensic</h2>
+<ol>
+<li>Network Isolation</li>
+<li>Initial Assessment (Crisis management: You, IT Director, Manager, First Responder)</li>
+<li>Time Synchronization Verification (Check watches and system clocks)</li>
+<li>RAM Dump Acquisition</li>
+<li>RAM Dump Integrity Verification (MD5 checksum of RAM.dmp)</li>
+<li>Disk Image Acquisition</li>
+<li>Disk Image Integrity Verification (MD5 checksum of Disk.dmp)</li>
+<li>Archiving (Uncompressed .tar format)</li>
+<li>Archive Integrity Verification (MD5 checksum)</li>
+<li>Start RAM and Disk Analysis</li>
+<li>Final Integrity Verification (Checksum validation)</li>
+<li>Forensic Report Preparation</li>
+<li>Conclusions and Recommendations</li>
+</ol>
+<h2 id="linux">Linux</h2>
 
 
 
