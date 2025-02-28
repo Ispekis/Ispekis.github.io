@@ -392,9 +392,13 @@
 <p><a href="https://github.com/cgsecurity/testdisk">Source</a></p>
 <pre><code>sudo apt install testdisk
 </code></pre>
+<pre><code>testdisk &lt;file&gt;
+</code></pre>
 <h3 id="photorec">PhotoRec</h3>
 <p><a href="https://github.com/cgsecurity/testdisk">Source</a></p>
 <pre><code>sudo apt install testdisk
+</code></pre>
+<pre><code>photorec &lt;file&gt;
 </code></pre>
 <h3 id="volatility">Volatility</h3>
 <p><a href="https://github.com/volatilityfoundation/volatility.git">Source</a></p>
@@ -406,6 +410,21 @@ sudo python2.7 -m pip install --upgrade setuptools
 sudo python2.7 -m pip install pycrypto
 sudo python2.7 -m pip install distorm3==3.4.4
 </code></pre>
+<p>Modify shebang to <code>#!/usr/bin/python2.7</code> and enable execution</p>
+<p>Fistly, you need to get the image profile :</p>
+<pre><code>./vol.py -f &lt;file&gt; imageinfo
+</code></pre>
+<pre><code>./vol.py -f &lt;file&gt; --profile=&lt;profile_name&gt; &lt;cmd&gt;
+</code></pre>
+<p>Some commands :</p>
+<ul>
+<li><code>filescan</code> : Pool scanner for file objects</li>
+<li><code>svcscan</code> : Scan for Windows services</li>
+<li><code>pslist</code> : Print all running processes by following the EPROCESS lists</li>
+<li><code>mftparser</code> : Scans for and parses potential MFT entries</li>
+<li><code>memdump -p &lt;pid&gt; --dump-dir &lt;output_directory&gt;</code> :</li>
+<li><code>printkey</code> : Print a registry key, and its subkeys and values</li>
+</ul>
 <h3 id="checksum-date-archive">Checksum &amp; Date &amp; Archive</h3>
 <pre><code>md5sum &lt;file&gt; &amp;&amp; date
 sha256sum &lt;file&gt; &amp;&amp; date
