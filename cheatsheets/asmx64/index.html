@@ -16,7 +16,7 @@
     
     
       
-        <title>Wazuh - My-Cyber-Knowledge</title>
+        <title>ASM X64 - My-Cyber-Knowledge</title>
       
     
     
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wazuh" class="md-skip">
+        <a href="#asm-x64" class="md-skip">
           Skip to content
         </a>
       
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Wazuh
+              ASM X64
             
           </span>
         </div>
@@ -259,6 +259,119 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arithmetic-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Arithmetic instructions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#system-calls" class="md-nav__link">
+    <span class="md-ellipsis">
+      System calls
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="System calls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#read" class="md-nav__link">
+    <span class="md-ellipsis">
+      Read
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#write" class="md-nav__link">
+    <span class="md-ellipsis">
+      Write
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open" class="md-nav__link">
+    <span class="md-ellipsis">
+      Open
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close" class="md-nav__link">
+    <span class="md-ellipsis">
+      Close
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exit
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#socket" class="md-nav__link">
+    <span class="md-ellipsis">
+      Socket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bind" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bind
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recvfrom" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recvfrom
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -275,13 +388,265 @@
 
 
 
-<h1 id="wazuh">Wazuh</h1>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-server/step-by-step.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-macos.html</p>
+<h1 id="asm-x64">ASM X64</h1>
+<p>https://x64.syscall.sh/</p>
+<h2 id="registry">Registry</h2>
+<table>
+<thead>
+<tr>
+<th>64-bit</th>
+<th>32 bits</th>
+<th>16 bits</th>
+<th>Higher &amp; Lower 8 bits</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RAX</td>
+<td>EAX</td>
+<td>AX</td>
+<td>AH / AL</td>
+</tr>
+<tr>
+<td>RBX</td>
+<td>EBX</td>
+<td>BX</td>
+<td>BH / BL</td>
+</tr>
+<tr>
+<td>RCX</td>
+<td>ECX</td>
+<td>CX</td>
+<td>CH / CL</td>
+</tr>
+<tr>
+<td>RDX</td>
+<td>EDX</td>
+<td>DX</td>
+<td>DH / DL</td>
+</tr>
+<tr>
+<td>RSI</td>
+<td>ESI</td>
+<td>SI</td>
+<td>SIL</td>
+</tr>
+<tr>
+<td>RBP</td>
+<td>EBP</td>
+<td>BP</td>
+<td>BPL</td>
+</tr>
+<tr>
+<td>RSP</td>
+<td>ESP</td>
+<td>SP</td>
+<td>SPL</td>
+</tr>
+<tr>
+<td>RDI</td>
+<td>EDI</td>
+<td>DI</td>
+<td>DIL</td>
+</tr>
+<tr>
+<td>R8</td>
+<td>R8D</td>
+<td>R8W</td>
+<td>R8B</td>
+</tr>
+<tr>
+<td>R9</td>
+<td>R9D</td>
+<td>R9W</td>
+<td>R9B</td>
+</tr>
+<tr>
+<td>R10</td>
+<td>R10D</td>
+<td>R10W</td>
+<td>R10B</td>
+</tr>
+<tr>
+<td>R11</td>
+<td>R11D</td>
+<td>R11W</td>
+<td>R11B</td>
+</tr>
+<tr>
+<td>R12</td>
+<td>R12D</td>
+<td>R12W</td>
+<td>R12B</td>
+</tr>
+<tr>
+<td>R13</td>
+<td>R13D</td>
+<td>R13W</td>
+<td>R13B</td>
+</tr>
+<tr>
+<td>R14</td>
+<td>R14D</td>
+<td>R14W</td>
+<td>R14B</td>
+</tr>
+<tr>
+<td>R15</td>
+<td>R15D</td>
+<td>R15W</td>
+<td>R15B</td>
+</tr>
+</tbody>
+</table>
+<h2 id="arithmetic-instructions">Arithmetic instructions</h2>
+<pre><code>add rax, 1    ; Adds 1 to RAX.
+sub rax, rdi  ; Subtracts the value of RDI from RAX and stores the result in RAX.
+mul rsi       ; Multiplies RAX by RSI and stores the result in RAX.
+div rbx       ; Divides RAX by RBX, storing the quotient in RAX and the remainder in RDX.
+
+and rax, rcx  ; Performs a bitwise AND between RAX and RCX, storing the result in RAX.
+or rdx, 1     ; Performs a bitwise OR between RDX and 1, storing the result in RDX.
+xor rsi, rsi  ; Performs a bitwise XOR between RSI and itself (zeroing RSI).
+not rbx       ; Inverts every bit of RBX.
+</code></pre>
+<h2 id="system-calls">System calls</h2>
+<h3 id="read">Read</h3>
+<ul>
+<li><code>rax</code> Syscall number (0 for read)</li>
+<li><code>rdi</code> File descriptor (0 for stdin)</li>
+<li><code>rsi</code> Buffer to store the input</li>
+<li><code>rdx</code> Number of bytes to read</li>
+</ul>
+<p>Return : Number of bytes read in <code>rax</code>, 0 if EOF</p>
+<pre><code>section .bss
+    buffer resb 10  ; Reserve 10 bytes for input
+...
+    mov rax, 0       ; sys_read
+    mov rdi, 0       ; stdin
+    mov rsi, buffer  ; buffer address
+    mov rdx, 10      ; read up to 10 bytes
+    syscall
+</code></pre>
+<hr />
+<h3 id="write">Write</h3>
+<ul>
+<li><code>rax</code> Syscall number (1 for write)</li>
+<li><code>rdi</code> File descriptor (1 for standard output)</li>
+<li><code>rsi</code> Pointer to the string (buffer) to write</li>
+<li><code>rdx</code> Number of bytes to write</li>
+</ul>
+<p>Return : Number of bytes written in <code>rax</code></p>
+<p>Example: Writing message to stdout</p>
+<pre><code>    mov rax, 1         ; sys_write
+    mov rdi, 1         ; stdout
+    mov rsi, msg       ; message address
+    mov rdx, msg_len   ; message length
+    syscall
+</code></pre>
+<hr />
+<h3 id="open">Open</h3>
+<ul>
+<li><code>rax</code> Syscall number (2 for open)</li>
+<li><code>rdi</code> Pointer to filename</li>
+<li><code>rsi</code> Flags (0 = read-only, 1 = write-only, 2 = read/write)</li>
+<li><code>rdx</code> File permissions (only if creating a file)</li>
+</ul>
+<p>Return : File descriptor in <code>rax</code></p>
+<p>Example: Open a file for reading</p>
+<pre><code>    mov rax, 2        ; sys_open
+    mov rdi, filename ; file name
+    mov rsi, 0        ; O_RDONLY
+    syscall
+</code></pre>
+<p>Example: Creating or append a file</p>
+<pre><code>    mov rax, 2  ; sys_open
+    mov rdi, filename  ; file name
+    mov rsi, 0x441 ; O_WRONLY | O_CREAT | O_APPEND
+    mov rdx, 0o666 ; rw-rw-rw-
+    syscall
+</code></pre>
+<hr />
+<h3 id="close">Close</h3>
+<ul>
+<li><code>rax</code> Syscall number (3 for close)</li>
+<li><code>rdi</code> File descriptor to close</li>
+</ul>
+<p>Example: Closing a file descriptor (fd)</p>
+<pre><code>    mov rax, 3  ; sys_close
+    mov rdi, fd ; file descriptor
+    syscall
+</code></pre>
+<hr />
+<h3 id="exit">Exit</h3>
+<ul>
+<li><code>rax</code> Syscall number (60 for exit)</li>
+<li><code>rdi</code> Exit status (0 = success, nonzero = error)</li>
+</ul>
+<p>Example: Exit with status 0</p>
+<pre><code>    mov rax, 60  ; sys_exit
+    xor rdi, rdi ; exit(0)
+    syscall
+</code></pre>
+<hr />
+<h3 id="socket">Socket</h3>
+<ul>
+<li><code>rax</code> Syscall number (41 for socket)</li>
+<li><code>rdi</code> Address family (2 for AF_INET)</li>
+<li><code>rsi</code> Socket type (1 for SOCK_STREAM)</li>
+<li><code>rdx</code> Protocol (0 for default)</li>
+</ul>
+<p>Return : Socket file descriptor in <code>rax</code></p>
+<p>Example: Create an IPv4 TCP socket</p>
+<pre><code>    mov rax, 41     ; sys_socket
+    mov rdi, 2      ; AF_INET
+    mov rsi, 1      ; SOCK_STREAM
+    xor rdx, rdx    ; protocol 0
+    syscall
+</code></pre>
+<hr />
+<h3 id="bind">Bind</h3>
+<ul>
+<li><code>rax</code> Syscall number (49 for bind)</li>
+<li><code>rdi</code> Socket file descriptor</li>
+<li><code>rsi</code> Pointer to sockaddr structure</li>
+<li><code>rdx</code> Size of the sockaddr structure</li>
+</ul>
+<p>Example: Bind a socket</p>
+<pre><code>section .data
+    sockaddr_in:
+        .sin_family dw 2 ; AF_INET
+        .sin_port   dw 0x3905 ; Port 1337 (little-endian: 0x0539)
+        .sin_addr   dd 0 ; INADDR_ANY (0.0.0.0)
+...
+    mov rax, 49      ; sys_bind
+    mov rdi, sockfd  ; socket file descriptor
+    mov rsi, sockaddr; pointer to sockaddr structure
+    mov rdx, 16      ; size of sockaddr_in
+    syscall
+</code></pre>
+<hr />
+<h3 id="recvfrom">Recvfrom</h3>
+<ul>
+<li><code>rax</code> Syscall number (45 for recvfrom)</li>
+<li><code>rdi</code> Socket file descriptor</li>
+<li><code>rsi</code> Pointer to buffer for received data</li>
+<li><code>rdx</code> Maximum number of bytes to receive</li>
+<li><code>r10</code> Flags</li>
+<li><code>r8</code>  Pointer to sender’s address</li>
+<li><code>r9</code>  Pointer to sender’s address length</li>
+</ul>
+<p>Return : Number of bytes received in <code>rax</code></p>
+<p>Example: Receive data from a socket</p>
+<pre><code>    mov rax, 45      ; sys_recvfrom
+    mov rdi, sockfd  ; socket descriptor
+    mov rsi, buffer  ; buffer address
+    mov rdx, 1024    ; max bytes to receive
+    xor r10, r10     ; flags = 0
+    xor r8, r8       ; no sender address
+    xor r9, r9       ; no sender length
+    syscall
+</code></pre>
 
 
 
