@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -312,9 +312,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#volatility" class="md-nav__link">
+  <a href="#volatility-2" class="md-nav__link">
     <span class="md-ellipsis">
-      Volatility
+      Volatility 2
     </span>
   </a>
   
@@ -324,6 +324,15 @@
   <a href="#checksum-date-archive" class="md-nav__link">
     <span class="md-ellipsis">
       Checksum &amp; Date &amp; Archive
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memprocfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memprocfs
     </span>
   </a>
   
@@ -400,7 +409,7 @@
 </code></pre>
 <pre><code>photorec &lt;file&gt;
 </code></pre>
-<h3 id="volatility">Volatility</h3>
+<h3 id="volatility-2">Volatility 2</h3>
 <p><a href="https://github.com/volatilityfoundation/volatility.git">Source</a></p>
 <pre><code>git clone https://github.com/volatilityfoundation/volatility.git
 sudo wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
@@ -425,12 +434,17 @@ sudo python2.7 -m pip install distorm3==3.4.4
 <li><code>memdump -p &lt;pid&gt; --dump-dir &lt;output_directory&gt;</code> :</li>
 <li><code>hivelist</code> : Print list of registry hives.</li>
 <li><code>printkey</code> : Print a registry key, and its subkeys and values</li>
+<li><code>envars</code> :</li>
 </ul>
 <h3 id="checksum-date-archive">Checksum &amp; Date &amp; Archive</h3>
 <pre><code>md5sum &lt;file&gt; &amp;&amp; date
 sha256sum &lt;file&gt; &amp;&amp; date
 zip -r -0 &lt;archive_name&gt;.zip &lt;file_to_zip&gt;
 tar -cf &lt;archive_name&gt;.tar &lt;file_to_zip&gt;
+</code></pre>
+<h3 id="memprocfs">Memprocfs</h3>
+<p><a href="https://github.com/ufrisk/MemProcFS">Source</a></p>
+<pre><code>memprocfs -f &lt;image&gt; -forensic 1 -mount &lt;directory&gt;
 </code></pre>
 <h2 id="steps-of-forensic">Steps of forensic</h2>
 <ol>

@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.8">
     
     
       
@@ -275,6 +275,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#data-definition-directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Definition Directives
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Data Definition Directives">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-reservation-directives-in-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Reservation Directives in .data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-reservation-directives-in-bss" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Reservation Directives in .bss
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#arithmetic-instructions" class="md-nav__link">
     <span class="md-ellipsis">
       Arithmetic instructions
@@ -496,6 +529,94 @@
 <td>R15D</td>
 <td>R15W</td>
 <td>R15B</td>
+</tr>
+</tbody>
+</table>
+<h2 id="data-definition-directives">Data Definition Directives</h2>
+<p>Data Definition Directives in assembly language are compiler directives that allocate and initialize memory for variables in a program. These directives define variables with specific sizes and values in the .data or .bss section of an assembly program. They help reserve space for storing numbers, characters, floating-point values, and pointers in memory.</p>
+<h3 id="data-reservation-directives-in-data">Data Reservation Directives in <code>.data</code></h3>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Meaning</th>
+<th>Size (Bytes)</th>
+<th>Example Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DB (Define Byte)</td>
+<td>Reserves 1 byte</td>
+<td>1 byte</td>
+<td><code>var1 DB 0x12</code> (1 byte)</td>
+</tr>
+<tr>
+<td>DW (Define Word)</td>
+<td>Reserves 1 word</td>
+<td>2 bytes</td>
+<td><code>var2 DW 0x1234</code> (2 bytes)</td>
+</tr>
+<tr>
+<td>DD (Define Doubleword)</td>
+<td>Reserves 1 doubleword</td>
+<td>4 bytes</td>
+<td><code>var3 DD 0x12345678</code> (4 bytes)</td>
+</tr>
+<tr>
+<td>DQ (Define Quadword)</td>
+<td>Reserves 1 quadword</td>
+<td>8 bytes</td>
+<td><code>var4 DQ 0x123456789ABCDEF0</code> (8 bytes)</td>
+</tr>
+<tr>
+<td>DT (Define Ten Bytes)</td>
+<td>Reserves 1 ten-byte value</td>
+<td>10 bytes</td>
+<td><code>var5 DT 123.456</code> (used for floating-point values in some cases)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="data-reservation-directives-in-bss">Data Reservation Directives in <code>.bss</code></h3>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Meaning</th>
+<th>Size (Bytes)</th>
+<th>Example Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RESB (Reserve Byte)</td>
+<td>Reserves N bytes</td>
+<td>1 byte</td>
+<td><code>buffer RESB 100</code> (Reserves 100 bytes)</td>
+</tr>
+<tr>
+<td>RESW (Reserve Word)</td>
+<td>Reserves N words</td>
+<td>2 bytes</td>
+<td><code>array RESW 10</code> (Reserves 10 × 2 bytes = 20 bytes)</td>
+</tr>
+<tr>
+<td>RESD (Reserve Doubleword)</td>
+<td>Reserves N doublewords</td>
+<td>4 bytes</td>
+<td><code>arr RESD 5</code> (Reserves 5 × 4 bytes = 20 bytes)</td>
+</tr>
+<tr>
+<td>RESQ (Reserve Quadword)</td>
+<td>Reserves N quadwords</td>
+<td>8 bytes</td>
+<td><code>data RESQ 3</code> (Reserves 3 × 8 bytes = 24 bytes)</td>
+</tr>
+<tr>
+<td>REST (Reserve Ten Bytes)</td>
+<td>Reserves N ten-byte values</td>
+<td>10 bytes</td>
+<td><code>bigData REST 2</code> (Reserves 20 bytes)</td>
 </tr>
 </tbody>
 </table>
