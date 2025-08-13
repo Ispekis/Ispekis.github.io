@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -338,6 +338,123 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="File permissions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#change-folder-owner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change folder owner
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configure-ssh-key-authentification-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configure SSH key authentification based
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crontab" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crontab
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-shell" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection shell
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-an-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create an user
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Create an user">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-service-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create service account
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssl" class="md-nav__link">
+    <span class="md-ellipsis">
+      SSL
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SSL">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generate-ssl-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      Generate ssl key
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rca" class="md-nav__link">
+    <span class="md-ellipsis">
+      RCA
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ica-intermediate-ca" class="md-nav__link">
+    <span class="md-ellipsis">
+      ICA (Intermediate CA)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ca-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      CA Web
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -431,6 +548,127 @@ lrwxrwxrwx 2 owner group *.*K ****-**-** **:** team.docs
 <li><code>w</code> (write): 2</li>
 <li><code>x</code> (execute): 1</li>
 </ul>
+<h3 id="change-folder-owner">Change folder owner</h3>
+<pre><code>chown -R &lt;user&gt;:&lt;group&gt; &lt;folder_path&gt;
+</code></pre>
+<h2 id="configure-ssh-key-authentification-based">Configure SSH key authentification based</h2>
+<p>Make sure your server have a <code>.ssh/authorized_keys</code> in the home of the user.</p>
+<p>Generate a key for the client :</p>
+<pre><code>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>You can then use ssh-copy-id <user>@<server_ip> to copy the key to the server authorized_keys</p>
+<p>In the server :
+Edit /etc/ssh/sshd_config:</p>
+<p>And change these :</p>
+<pre><code>...
+PubkeyAuthentication yes
+...
+AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
+...
+PasswordAuthentication no
+...
+</code></pre>
+<h2 id="crontab">Crontab</h2>
+<p>Create a crontab :</p>
+<pre><code>crontab -e
+</code></pre>
+<p>Path of crontabs is in <code>/var/spool/cron/crontabs</code>.</p>
+<h2 id="connection-shell">Connection shell</h2>
+<p>You can configure a user's login shell by editing the <code>/etc/passwd</code> file. To allow shell access, specify a valid shell such as <code>/bin/bash</code>, <code>/bin/sh</code>, or any other available shell on the system.
+To prevent a user from logging in with a shell, set their shell to <code>/usr/sbin/nologin</code>.</p>
+<h2 id="create-an-user">Create an user</h2>
+<h3 id="create-service-account">Create service account</h3>
+<p>useradd -d <home_directory> -s <shell_path> -r <username></p>
+<h2 id="ssl">SSL</h2>
+<h3 id="generate-ssl-key">Generate ssl key</h3>
+<ul>
+<li>Key generation : <code>genpkey</code></li>
+<li>Certificat request : <code>req (-x509)</code></li>
+<li>Certificat signing : <code>x509</code></li>
+<li>Verify certification chain : <code>verify</code></li>
+</ul>
+<p>Note: Since 2016, Firefox has disabled the Domain Name; it must now be done with a SAN (v1).</p>
+<p>Model generation v3.</p>
+<h3 id="rca">RCA</h3>
+<p>Generate RCA key :</p>
+<pre><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out rca.key
+</code></pre>
+<p>Create RCA configuration :</p>
+<pre><code>[req]
+prompt = no
+distinguished_name = dn
+req_extensions = ext
+
+[dn]
+CN = &lt;Commun Name&gt;
+O = &lt;Organization&gt;
+
+[ext]
+subjectAltName = DNS:*.&lt;my-domain&gt;
+</code></pre>
+<p>NB : You can precise DNS or IP</p>
+<p>Generate RCA certificat :</p>
+<pre><code>openssl req -x509 -key rca.key -out rca.crt -days 365 -config conf_rca
+</code></pre>
+<p>Check certificat:</p>
+<pre><code>openssl x509 -nout -text -in rca.crt
+</code></pre>
+<h3 id="ica-intermediate-ca">ICA (Intermediate CA)</h3>
+<p>Generate ICA key :</p>
+<pre><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out ica.key
+</code></pre>
+<p>Create ICA configuration :</p>
+<pre><code>[req]
+prompt = no
+distinguished_name = dn
+req_extensions = ext
+x509_extensions = ext
+
+[dn]
+CN = &lt;Commun Name&gt;
+O = &lt;Organization&gt;
+
+[ext]
+basicConstraints = CA:true
+subjectAltName = DNS:*.&lt;my-domain&gt;
+</code></pre>
+<p>On a ajouter x509_extensions = ext</p>
+<p>Generate ICA certificat :</p>
+<pre><code>openssl req -x509 -key ica.key -out ica.crt -CA rca.crt -CAkey rca.key -days 365 -config conf_ica
+</code></pre>
+<p>-CA : auto qui va signer ce cert</p>
+<p>Vertifier que la chaine est valide :</p>
+<pre><code>openssl verify -CAfile rca.crt ica.crt
+</code></pre>
+<p>Check certificat:</p>
+<pre><code>openssl x509 -nout -text -in ica.crt
+</code></pre>
+<h3 id="ca-web">CA Web</h3>
+<p>Generate CA key :</p>
+<pre><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out web.key
+</code></pre>
+<p>Create CA configuration :</p>
+<pre><code>[req]
+prompt = no
+distinguished_name = dn
+req_extensions = ext
+x509_extensions = ext
+
+[dn]
+CN = &lt;Commun Name&gt;
+O = &lt;Organization&gt;
+
+[ext]
+basicConstraints = CA:false
+subjectAltName = DNS:web.&lt;my-domain&gt;
+</code></pre>
+<p>Generate CA certificat :</p>
+<pre><code>openssl req -x509 -key web.key -out web.crt -CA ica.crt -CAkey ica.key -days 365 -config conf_web
+</code></pre>
+<p>Verify full chain:</p>
+<pre><code>cat ica.crt rca.crt &gt; chain.crt
+openssl verify -CAfile chain.crt web.crt
+</code></pre>
 
 
 
@@ -491,7 +729,7 @@ lrwxrwxrwx 2 owner group *.*K ****-**-** **:** team.docs
       <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   </body>
