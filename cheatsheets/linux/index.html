@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -552,11 +552,11 @@ lrwxrwxrwx 2 owner group *.*K ****-**-** **:** team.docs
 <pre><code>chown -R &lt;user&gt;:&lt;group&gt; &lt;folder_path&gt;
 </code></pre>
 <h2 id="configure-ssh-key-authentification-based">Configure SSH key authentification based</h2>
-<p>Make sure your server have a <code>.ssh/authorized_keys</code> in the home of the user.</p>
+<p>Make sure your server have the file <code>.ssh/authorized_keys</code> in the home of the user.</p>
 <p>Generate a key for the client :</p>
 <pre><code>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
 </code></pre>
-<p>You can then use ssh-copy-id <user>@<server_ip> to copy the key to the server authorized_keys</p>
+<p>You can then use <code>ssh-copy-id [-i &lt;key.pub&gt;] &lt;user&gt;@&lt;server_ip&gt;</code> to copy the key to the server authorized_keys</p>
 <p>In the server :
 Edit /etc/ssh/sshd_config:</p>
 <p>And change these :</p>
@@ -578,7 +578,8 @@ PasswordAuthentication no
 To prevent a user from logging in with a shell, set their shell to <code>/usr/sbin/nologin</code>.</p>
 <h2 id="create-an-user">Create an user</h2>
 <h3 id="create-service-account">Create service account</h3>
-<p>useradd -d <home_directory> -s <shell_path> -r <username></p>
+<pre><code>useradd -d &lt;home_directory&gt; -s &lt;shell_path&gt; -r &lt;username&gt;
+</code></pre>
 <h2 id="ssl">SSL</h2>
 <h3 id="generate-ssl-key">Generate ssl key</h3>
 <ul>
@@ -726,10 +727,10 @@ openssl verify -CAfile chain.crt web.crt
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>

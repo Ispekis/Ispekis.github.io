@@ -11,19 +11,19 @@
       
       
       
-      <link rel="icon" href="/assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
-        <title>My-Cyber-Knowledge</title>
+        <title>Pwn - My-Cyber-Knowledge</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.e53b48f4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.e53b48f4.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,7 +42,7 @@
       
     
     
-    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -65,6 +65,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#pwn" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -75,7 +80,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="My-Cyber-Knowledge" class="md-header__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
+    <a href=".." title="My-Cyber-Knowledge" class="md-header__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -95,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Pwn
             
           </span>
         </div>
@@ -168,7 +173,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -192,7 +197,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -203,7 +210,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="My-Cyber-Knowledge" class="md-nav__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
+    <a href=".." title="My-Cyber-Knowledge" class="md-nav__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -221,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -244,6 +251,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -253,6 +262,91 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pwndbg" class="md-nav__link">
+    <span class="md-ellipsis">
+      pwndbg
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gdb-essential-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      gdb (essential commands)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="gdb (essential commands)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#showing-execution-path-how-the-program-runs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Showing execution path (how the program runs)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ropper" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ropper
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-functions-inside-a-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding functions inside a library
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-networked-challenges-netcat-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running networked challenges (netcat example)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -264,8 +358,89 @@
             <div class="md-content" data-md-component="content">
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
+  
 
+
+
+
+<h1 id="pwn">Pwn</h1>
+<h2 id="tools">Tools</h2>
+<h3 id="pwndbg">pwndbg</h3>
+<p><code>pwndbg</code> is an extension for <code>gdb</code> that provides many convenience features for reverse engineering and exploitation.</p>
+<p>Repository: https://github.com/pwndbg/pwndbg</p>
+<p>Install (one-line):</p>
+<pre><code>curl -qsL 'https://install.pwndbg.re' | sh -s -- -t pwndbg-gdb
+</code></pre>
+<p>Once installed, start gdb normally; pwndbg will load automatically and enhance the prompt, stack/heap views, and many helper commands.</p>
+<h3 id="gdb-essential-commands">gdb (essential commands)</h3>
+<p>Common gdb commands and short explanations useful during exploit development:</p>
+<pre><code># break at main (or another symbol)
+break main
+
+
+# disassemble 'main'
+disass main
+
+
+# list functions (grep a function name)
+info functions &lt;function_name&gt;
+
+
+# dump memory at the current stack pointer (200 bytes shown as hex-bytes)
+x/&lt;nbr&gt;xb $rsp
+
+
+# find which symbol owns an address
+info symbol &lt;address&gt;
+</code></pre>
+<h4 id="showing-execution-path-how-the-program-runs">Showing execution path (how the program runs)</h4>
+<p>common interactive workflow in gdb:</p>
+<p>Start the program in gdb using run with desired arguments or input.</p>
+<p>Use CTRL+C to interrupt execution at any point to inspect registers, memory and call stack.</p>
+<p>Useful helper commands while debugging:</p>
+<pre><code># show mapped memory areas for the current process (pwndbg provides 'vmmap')
+vmmap
+
+
+# show externally what shared libraries the target binary will use
+ldd /path/to/challenge
+</code></pre>
+<h3 id="ropper">Ropper</h3>
+<p>ropper is a tool that finds gadgets in binaries and libraries (useful for building ROP chains).</p>
+<p>Install:</p>
+<pre><code>pip install --user ropper
+</code></pre>
+<p>Use:</p>
+<pre><code>ropper --file &lt;file&gt;
+# or search for a specific gadget pattern
+ropper --file &lt;file&gt; --chain 'pop|ret'
+</code></pre>
+<h3 id="finding-functions-inside-a-library">Finding functions inside a library</h3>
+<p>nm -D /lib/x86_64-linux-gnu/libc.so.6 | grep " system"</p>
+<h3 id="running-networked-challenges-netcat-example">Running networked challenges (netcat example)</h3>
+<p>To run a challenge locally and listen for incoming connections (example):</p>
+<pre><code># netcat listens on port 1337 and executes the binary for each connection
+ncat -lvp 1337 -c './binary'
+</code></pre>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
               </article>
             </div>
           
@@ -305,10 +480,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "/", "features": ["navigation.tabs", "content.code.copy"], "search": "/assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
