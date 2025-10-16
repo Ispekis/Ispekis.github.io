@@ -11,19 +11,19 @@
       
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
     
     
       
-        <title>Proxmox - My-Cyber-Knowledge</title>
+        <title>Radare2 - My-Cyber-Knowledge</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -42,7 +42,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -66,7 +66,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-an-user-account" class="md-skip">
+        <a href="#radare2" class="md-skip">
           Skip to content
         </a>
       
@@ -80,7 +80,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="My-Cyber-Knowledge" class="md-header__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
+    <a href="../.." title="My-Cyber-Knowledge" class="md-header__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -100,7 +100,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Proxmox
+              Radare2
             
           </span>
         </div>
@@ -173,7 +173,7 @@
   
   
     <li class="md-tabs__item">
-      <a href=".." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -197,7 +197,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -208,7 +210,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="My-Cyber-Knowledge" class="md-nav__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
+    <a href="../.." title="My-Cyber-Knowledge" class="md-nav__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -226,7 +228,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -249,6 +251,8 @@
             
             
               
+                
+              
               <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
@@ -258,6 +262,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -266,20 +272,80 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-an-user-account" class="md-nav__link">
+  <a href="#basic-debugging-workflow" class="md-nav__link">
     <span class="md-ellipsis">
-      Create an user account
+      Basic Debugging Workflow
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Basic Debugging Workflow">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-start-radare2-in-debug-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Start Radare2 in Debug Mode
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#rentrer-dans-un-conteneur" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-analyze-the-binary" class="md-nav__link">
     <span class="md-ellipsis">
-      Rentrer dans un conteneur
+      2. Analyze the Binary
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-enter-visual-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Enter Visual Mode
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-inspect-functions-and-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Inspect Functions and Code
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-set-breakpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Set Breakpoints
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-continue-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Continue Execution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-common-visual-mode-shortcuts" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Common Visual Mode Shortcuts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -296,21 +362,113 @@
               <article class="md-content__inner md-typeset">
                 
                   
+  
 
 
 
-  <h1>Proxmox</h1>
 
-<h2 id="create-an-user-account">Create an user account</h2>
-<p>pveam available --section system
-pveam download local debian-12-standard_12.7-1_amd64.tar.zst</p>
-<h2 id="rentrer-dans-un-conteneur">Rentrer dans un conteneur</h2>
-<pre><code>pct enter &lt;id&gt;
+<h1 id="radare2">Radare2</h1>
+<h2 id="basic-debugging-workflow">Basic Debugging Workflow</h2>
+<h3 id="1-start-radare2-in-debug-mode">1. Start Radare2 in Debug Mode</h3>
+<pre><code class="language-bash">r2 -d &lt;binary&gt;
 </code></pre>
-<p>a noter qu'il faut faire un :
-apt update &amp;&amp; apt upgrade après toute install d'une nouveau conteneur</p>
-<p>a noter :
-Si on fait de la virtualisation dans de la virtualisation : activer le mode promiscuité de a machine virtuel de la carte réseau pour que les vms/contenaires de proxmox ont acces à internet</p>
+<p>Launches Radare2 with the specified binary in <strong>debug mode</strong> (similar to <code>gdb ./binary</code>).</p>
+<hr />
+<h3 id="2-analyze-the-binary">2. Analyze the Binary</h3>
+<pre><code class="language-bash">aaa
+</code></pre>
+<p>Performs <strong>auto analysis</strong> of the binary — finds functions, basic blocks, symbols, etc.
+You can also use:</p>
+<ul>
+<li><code>aa</code> — basic analysis</li>
+<li><code>aaa</code> — deeper analysis (recommended for most cases)</li>
+</ul>
+<hr />
+<h3 id="3-enter-visual-mode">3. Enter Visual Mode</h3>
+<pre><code class="language-bash">v
+</code></pre>
+<p>Enters <strong>visual mode</strong> for interactive inspection of code and memory.
+Use these shortcuts inside visual mode:</p>
+<ul>
+<li><code>p</code> — change view (disassembly, hex, graph, etc.)</li>
+<li><code>V</code> — visual graph mode</li>
+<li><code>q</code> — quit visual mode</li>
+</ul>
+<hr />
+<h3 id="4-inspect-functions-and-code">4. Inspect Functions and Code</h3>
+<pre><code class="language-bash">pdf
+</code></pre>
+<p>Prints the <strong>disassembly</strong> of the current function.</p>
+<p>You can also use:</p>
+<pre><code class="language-bash">pd &lt;n&gt;
+</code></pre>
+<p>to print <code>&lt;n&gt;</code> instructions from the current address.</p>
+<hr />
+<h3 id="5-set-breakpoints">5. Set Breakpoints</h3>
+<pre><code class="language-bash">db &lt;address&gt;
+</code></pre>
+<p>Sets a <strong>breakpoint</strong> at the specified address.
+Example:</p>
+<pre><code class="language-bash">db main
+</code></pre>
+<p>sets a breakpoint at the <code>main()</code> function.</p>
+<hr />
+<h3 id="6-continue-execution">6. Continue Execution</h3>
+<pre><code class="language-bash">dc
+</code></pre>
+<p><strong>Continue</strong> program execution until the next breakpoint or program termination.</p>
+<p>Other useful commands:</p>
+<ul>
+<li><code>ds</code> — step into (like <code>stepi</code> in GDB)</li>
+<li><code>dso</code> — step over (skip function calls)</li>
+<li><code>dr</code> — show registers</li>
+<li><code>px</code> — dump memory in hex</li>
+<li><code>pxw</code> — dump memory as 32-bit words</li>
+</ul>
+<hr />
+<h3 id="7-common-visual-mode-shortcuts">7. Common Visual Mode Shortcuts</h3>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>v</code></td>
+<td>Enter visual mode</td>
+</tr>
+<tr>
+<td><code>V</code></td>
+<td>Visual graph mode</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Change display mode</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>Seek (move to address)</td>
+</tr>
+<tr>
+<td><code>/</code></td>
+<td>Search pattern</td>
+</tr>
+<tr>
+<td><code>db</code></td>
+<td>Set breakpoint</td>
+</tr>
+<tr>
+<td><code>dc</code></td>
+<td>Continue execution</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Quit visual mode</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -318,8 +476,13 @@ Si on fait de la virtualisation dans de la virtualisation : activer le mode prom
 
 
 
+  
+  
 
 
+
+
+  
 
 
 
@@ -363,10 +526,10 @@ Si on fait de la virtualisation dans de la virtualisation : activer le mode prom
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
