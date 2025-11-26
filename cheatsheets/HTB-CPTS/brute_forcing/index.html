@@ -19,7 +19,7 @@
     
     
       
-        <title>Target Connection - My-Cyber-Knowledge</title>
+        <title>Brute Forcing - My-Cyber-Knowledge</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#target-connection" class="md-skip">
+        <a href="#brute-forcing" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Target Connection
+              Brute Forcing
             
           </span>
         </div>
@@ -279,6 +279,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#wordlists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wordlists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hydra" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hydra
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hydra">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ssh" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -288,30 +311,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#winrm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        WinRM
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#smb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SMB
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rdp" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -321,63 +322,36 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#smtp" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#smb" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SMTP
+        SMB
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#imappop3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IMAP/POP3
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
+  <a href="#john-the-ripper" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MYSQL
+        John The Ripper
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mssqlclient" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MSSQLCLIENT
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#netexec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NetExec
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="John The Ripper">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -385,6 +359,11 @@
       
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -407,54 +386,26 @@
 
 
 
-<h1 id="target-connection">Target Connection</h1>
-<h2 id="ssh">SSH</h2>
-<pre><code>ssh user@&lt;ip&gt;
+<h1 id="brute-forcing">Brute Forcing</h1>
+<h2 id="wordlists">Wordlists</h2>
+<p>Wordlist    Description Typical Use Source
+rockyou.txt A popular password wordlist containing millions of passwords leaked from the RockYou breach.    Commonly used for password brute force attacks. RockYou breach dataset
+top-usernames-shortlist.txt A concise list of the most common usernames.    Suitable for quick brute force username attempts.   SecLists
+xato-net-10-million-usernames.txt   A more extensive list of 10 million usernames.  Used for thorough username brute forcing.   SecLists
+2023-200_most_used_passwords.txt    A list of the 200 most commonly used passwords as of 2023.  Effective for targeting commonly reused passwords.  SecLists
+Default-Credentials/default-passwords.txt   A list of default usernames and passwords commonly used in routers, software, and other devices.    Ideal for trying default credentials.   SecLists</p>
+<h2 id="hydra">Hydra</h2>
+<h3 id="ssh">SSH</h3>
+<pre><code>hydra -L &lt;username.wordlist&gt; -P &lt;password.wordlist&gt; ssh://&lt;ip&gt;
 </code></pre>
-<h2 id="winrm">WinRM</h2>
-<pre><code>evil-winrm -i &lt;ip&gt; -u user -p password
+<h3 id="rdp">RDP</h3>
+<pre><code>hydra -L &lt;username.wordlist&gt; -P &lt;password.wordlist&gt; rdp://&lt;ip&gt;
 </code></pre>
-<h2 id="smb">SMB</h2>
-<pre><code>smbclient -U user \\\\&lt;ip&gt;\\SHARENAME
+<h3 id="smb">SMB</h3>
+<pre><code>hydra -L &lt;username.wordlist&gt; -P &lt;password.wordlist&gt; smb://&lt;ip&gt;
 </code></pre>
-<h2 id="rdp">RDP</h2>
-<pre><code>xfreerdp /v:&lt;ip&gt; /u:&lt;username&gt; /p:&lt;password&gt;
-</code></pre>
-<h2 id="smtp">SMTP</h2>
-<pre><code>telnet &lt;ip&gt; 25
-</code></pre>
-<h2 id="imappop3">IMAP/POP3</h2>
-<pre><code>curl -k 'imaps://&lt;ip&gt;' --user &lt;username&gt;:&lt;password&gt;
-openssl s_client -connect &lt;ip&gt;:pop3s
-openssl s_client -connect &lt;ip&gt;:imaps
-</code></pre>
-<h2 id="mysql">MYSQL</h2>
-<pre><code>mysql -u root -h &lt;ip&gt;
-mysql -u root -p&lt;password&gt; -h &lt;ip&gt;
-</code></pre>
-<h2 id="mssqlclient">MSSQLCLIENT</h2>
-<pre><code>python3 mssqlclient.py &lt;username&gt;@&lt;ip&gt; -windows-auth
-</code></pre>
-<h2 id="netexec">NetExec</h2>
-<pre><code>sudo apt-get -y install netexec
-netexec &lt;proto&gt; &lt;target-IP&gt; -u &lt;user or userlist&gt; -p &lt;password or passwordlist&gt;
-
-Available Protocols:
-  {nfs,ftp,ssh,winrm,smb,wmi,rdp,mssql,ldap,vnc}
-    nfs                 own stuff using NFS
-    ftp                 own stuff using FTP
-    ssh                 own stuff using SSH
-    winrm               own stuff using WINRM
-    smb                 own stuff using SMB
-    wmi                 own stuff using WMI
-    rdp                 own stuff using RDP
-    mssql               own stuff using MSSQL
-    ldap                own stuff using LDAP
-    vnc                 own stuff using VNC
-</code></pre>
-<h2 id="_1"></h2>
-<pre><code>
-</code></pre>
+<h2 id="john-the-ripper">John The Ripper</h2>
+<h3 id="_1"></h3>
 
 
 

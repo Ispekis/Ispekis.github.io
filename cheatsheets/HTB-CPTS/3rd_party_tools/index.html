@@ -19,7 +19,7 @@
     
     
       
-        <title>Target Connection - My-Cyber-Knowledge</title>
+        <title>3rd Party Tools - My-Cyber-Knowledge</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#target-connection" class="md-skip">
+        <a href="#3rd-party-tools" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Target Connection
+              3rd Party Tools
             
           </span>
         </div>
@@ -279,10 +279,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
+  <a href="#username-anarchy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SSH
+        Username Anarchy
       
     </span>
   </a>
@@ -290,10 +290,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#winrm" class="md-nav__link">
+  <a href="#cupp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WinRM
+        CUPP
       
     </span>
   </a>
@@ -301,10 +301,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#smb" class="md-nav__link">
+  <a href="#mimikatz" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SMB
+        Mimikatz
       
     </span>
   </a>
@@ -312,10 +312,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rdp" class="md-nav__link">
+  <a href="#lazagne" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RDP
+        LaZagne
       
     </span>
   </a>
@@ -323,10 +323,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#smtp" class="md-nav__link">
+  <a href="#kerbrute" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SMTP
+        Kerbrute
       
     </span>
   </a>
@@ -334,10 +334,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#imappop3" class="md-nav__link">
+  <a href="#mimipenguin" class="md-nav__link">
     <span class="md-ellipsis">
       
-        IMAP/POP3
+        Mimipenguin
       
     </span>
   </a>
@@ -345,10 +345,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
+  <a href="#firefox-decrypt" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MYSQL
+        Firefox Decrypt
       
     </span>
   </a>
@@ -356,32 +356,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mssqlclient" class="md-nav__link">
+  <a href="#pcredz" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MSSQLCLIENT
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#netexec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NetExec
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        
+        Pcredz
       
     </span>
   </a>
@@ -407,54 +385,36 @@
 
 
 
-<h1 id="target-connection">Target Connection</h1>
-<h2 id="ssh">SSH</h2>
-<pre><code>ssh user@&lt;ip&gt;
+<h1 id="3rd-party-tools">3rd Party Tools</h1>
+<h2 id="username-anarchy">Username Anarchy</h2>
+<p>A tool that generates likely username formats from names, useful for auditing account-naming conventions during security assessments.</p>
+<p>https://github.com/urbanadventurer/username-anarchy</p>
+<h2 id="cupp">CUPP</h2>
+<p>CUPP (Common User Passwords Profiler), a tool designed to create highly personalized password wordlists that leverage the gathered intelligence about your target.</p>
+<pre><code>sudo apt install cupp -y
 </code></pre>
-<h2 id="winrm">WinRM</h2>
-<pre><code>evil-winrm -i &lt;ip&gt; -u user -p password
+<h2 id="mimikatz">Mimikatz</h2>
+<p>https://github.com/gentilkiwi/mimikatz</p>
+<p>A well-known security research tool that demonstrates weaknesses in Windows authentication by extracting credentials from memory.</p>
+<h2 id="lazagne">LaZagne</h2>
+<p>https://github.com/AlessandroZ/LaZagne</p>
+<p>A post-exploitation auditing tool that searches a system for stored passwords in various applications.</p>
+<h2 id="kerbrute">Kerbrute</h2>
+<p>https://github.com/ropnop/kerbrute</p>
+<p>A Kerberos enumeration tool used by defenders and testers to identify valid usernames and perform protocol-level enumeration.</p>
+<h2 id="mimipenguin">Mimipenguin</h2>
+<p>https://github.com/huntergregal/mimipenguin</p>
+<p>A Linux credential-recovery research tool that attempts to extract plaintext passwords from memory on certain distributions.</p>
+<pre><code>sudo python3 mimipenguin.py
 </code></pre>
-<h2 id="smb">SMB</h2>
-<pre><code>smbclient -U user \\\\&lt;ip&gt;\\SHARENAME
+<h2 id="firefox-decrypt">Firefox Decrypt</h2>
+<p>A utility for recovering Firefox-stored passwords when access to the local profile is already available.</p>
+<p>https://github.com/unode/firefox_decrypt</p>
+<pre><code>python3.9 firefox_decrypt.py
 </code></pre>
-<h2 id="rdp">RDP</h2>
-<pre><code>xfreerdp /v:&lt;ip&gt; /u:&lt;username&gt; /p:&lt;password&gt;
-</code></pre>
-<h2 id="smtp">SMTP</h2>
-<pre><code>telnet &lt;ip&gt; 25
-</code></pre>
-<h2 id="imappop3">IMAP/POP3</h2>
-<pre><code>curl -k 'imaps://&lt;ip&gt;' --user &lt;username&gt;:&lt;password&gt;
-openssl s_client -connect &lt;ip&gt;:pop3s
-openssl s_client -connect &lt;ip&gt;:imaps
-</code></pre>
-<h2 id="mysql">MYSQL</h2>
-<pre><code>mysql -u root -h &lt;ip&gt;
-mysql -u root -p&lt;password&gt; -h &lt;ip&gt;
-</code></pre>
-<h2 id="mssqlclient">MSSQLCLIENT</h2>
-<pre><code>python3 mssqlclient.py &lt;username&gt;@&lt;ip&gt; -windows-auth
-</code></pre>
-<h2 id="netexec">NetExec</h2>
-<pre><code>sudo apt-get -y install netexec
-netexec &lt;proto&gt; &lt;target-IP&gt; -u &lt;user or userlist&gt; -p &lt;password or passwordlist&gt;
-
-Available Protocols:
-  {nfs,ftp,ssh,winrm,smb,wmi,rdp,mssql,ldap,vnc}
-    nfs                 own stuff using NFS
-    ftp                 own stuff using FTP
-    ssh                 own stuff using SSH
-    winrm               own stuff using WINRM
-    smb                 own stuff using SMB
-    wmi                 own stuff using WMI
-    rdp                 own stuff using RDP
-    mssql               own stuff using MSSQL
-    ldap                own stuff using LDAP
-    vnc                 own stuff using VNC
-</code></pre>
-<h2 id="_1"></h2>
-<pre><code>
-</code></pre>
+<h2 id="pcredz">Pcredz</h2>
+<p>A network analysis tool that parses captured traffic to identify credential-related data during authorized monitoring or testing.</p>
+<p>https://github.com/lgandx/PCredz</p>
 
 
 
