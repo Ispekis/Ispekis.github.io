@@ -287,18 +287,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#hydra" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Hydra
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Hydra">
+    <nav class="md-nav" aria-label="Wordlists">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -388,13 +377,60 @@
 
 <h1 id="brute-forcing">Brute Forcing</h1>
 <h2 id="wordlists">Wordlists</h2>
-<p>Wordlist    Description Typical Use Source
-rockyou.txt A popular password wordlist containing millions of passwords leaked from the RockYou breach.    Commonly used for password brute force attacks. RockYou breach dataset
-top-usernames-shortlist.txt A concise list of the most common usernames.    Suitable for quick brute force username attempts.   SecLists
-xato-net-10-million-usernames.txt   A more extensive list of 10 million usernames.  Used for thorough username brute forcing.   SecLists
-2023-200_most_used_passwords.txt    A list of the 200 most commonly used passwords as of 2023.  Effective for targeting commonly reused passwords.  SecLists
-Default-Credentials/default-passwords.txt   A list of default usernames and passwords commonly used in routers, software, and other devices.    Ideal for trying default credentials.   SecLists</p>
-<h2 id="hydra">Hydra</h2>
+<table>
+<thead>
+<tr>
+<th>Wordlist</th>
+<th>Description</th>
+<th>Typical Use</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rockyou.txt</td>
+<td>A popular password wordlist containing millions of passwords leaked from the RockYou breach.    Commonly used for password brute force attacks.</td>
+<td>RockYou</td>
+<td>breach dataset</td>
+</tr>
+<tr>
+<td>top-usernames-shortlist.txt</td>
+<td>A concise list of the most common usernames.</td>
+<td>Suitable for quick brute force username attempts.</td>
+<td>SecLists</td>
+</tr>
+<tr>
+<td>xato-net-10-million-usernames.txt</td>
+<td>A more extensive list of 10 million usernames.</td>
+<td>Used for thorough username brute forcing.</td>
+<td>SecLists</td>
+</tr>
+<tr>
+<td>2023-200_most_used_passwords.txt</td>
+<td>A list of the 200 most commonly used passwords as of 2023.</td>
+<td>Effective for targeting commonly reused passwords.</td>
+<td>SecLists</td>
+</tr>
+<tr>
+<td>Default-Credentials/default-passwords.txt</td>
+<td>A list of default usernames and passwords commonly used in routers, software, and other devices.</td>
+<td>Ideal for trying default credentials.</td>
+<td>SecLists</td>
+</tr>
+<tr>
+<td>b</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>## Hydra</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h3 id="ssh">SSH</h3>
 <pre><code>hydra -L &lt;username.wordlist&gt; -P &lt;password.wordlist&gt; ssh://&lt;ip&gt;
 </code></pre>
