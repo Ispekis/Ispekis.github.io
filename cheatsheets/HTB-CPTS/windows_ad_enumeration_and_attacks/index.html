@@ -1,0 +1,608 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Active Directory Enumeration & Attacks - My-Cyber-Knowledge</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#active-directory-enumeration-attacks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="My-Cyber-Knowledge" class="md-header__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            My-Cyber-Knowledge
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Active Directory Enumeration &amp; Attacks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="My-Cyber-Knowledge" class="md-nav__button md-logo" aria-label="My-Cyber-Knowledge" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    My-Cyber-Knowledge
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tools
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disable-powershell-script-execution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Disable powershell script execution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bloodhound" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BloodHound
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+
+<h1 id="active-directory-enumeration-attacks">Active Directory Enumeration &amp; Attacks</h1>
+<h2 id="tools">Tools</h2>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/PowerShellMafia/PowerSploit/blob/master/Recon/PowerView.ps1">PowerView</a> / <a href="https://github.com/dmchell/SharpView">SharpView</a></td>
+<td>A PowerShell tool and a .NET port used for AD situational awareness. Replacements for <code>net*</code> commands, useful for checking access, targeting users/computers, and identifying Kerberoasting/ASREPRoasting targets.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/BloodHoundAD/BloodHound">BloodHound</a></td>
+<td>Visually maps AD relationships to plan attack paths. Uses the <a href="https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors">SharpHound</a> ingestor and a <a href="https://neo4j.com/">Neo4j</a> database for analysis.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/BloodHoundAD/BloodHound/tree/master/Collectors">SharpHound</a></td>
+<td>C# data collector gathering extensive AD object information, outputting JSON for BloodHound.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/fox-it/BloodHound.py">BloodHound.py</a></td>
+<td>Python BloodHound ingestor based on the <a href="https://github.com/CoreSecurity/impacket/">Impacket toolkit</a>. Works from non-domain-joined hosts.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ropnop/kerbrute">Kerbrute</a></td>
+<td>Go tool for Kerberos Pre-Authentication enumeration, password spraying, and brute force.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket">Impacket toolkit</a></td>
+<td>Python toolkit for interacting with network protocols, including many AD enumeration and attack scripts.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/lgandx/Responder">Responder</a></td>
+<td>LLMNR, NBT-NS, and MDNS poisoning tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Kevin-Robertson/Inveigh/blob/master/Inveigh.ps1">Inveigh.ps1</a></td>
+<td>PowerShell spoofing/poisoning tool similar to Responder.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Kevin-Robertson/Inveigh/tree/master/Inveigh">C# Inveigh (InveighZero)</a></td>
+<td>C# version of Inveigh with an interactive console.</td>
+</tr>
+<tr>
+<td><a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/rpcinfo">rpcinfo</a></td>
+<td>RPC service enumeration utility.</td>
+</tr>
+<tr>
+<td><a href="https://www.samba.org/samba/docs/current/man-html/rpcclient.1.html">rpcclient</a></td>
+<td>Samba tool to interact with AD via the remote RPC service.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/byt3bl33d3r/CrackMapExec">CrackMapExec (CME)</a></td>
+<td>Enumeration, attack and post-exploitation tool abusing SMB, WMI, WinRM, MSSQL, etc.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/GhostPack/Rubeus">Rubeus</a></td>
+<td>C# tool for Kerberos abuse.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/GetUserSPNs.py">GetUserSPNs.py</a></td>
+<td>Impacket script for identifying SPNs tied to user accounts.</td>
+</tr>
+<tr>
+<td><a href="https://hashcat.net/hashcat/">Hashcat</a></td>
+<td>Hash cracking tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/CiscoCXSecurity/enum4linux">enum4linux</a></td>
+<td>Enumerates Windows &amp; Samba systems.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cddmp/enum4linux-ng">enum4linux-ng</a></td>
+<td>Modern rework of enum4linux.</td>
+</tr>
+<tr>
+<td><a href="https://linux.die.net/man/1/ldapsearch">ldapsearch</a></td>
+<td>Built-in LDAP query utility.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ropnop/windapsearch">windapsearch</a></td>
+<td>Python LDAP enumeration script (users, groups, computers).</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dafthack/DomainPasswordSpray">DomainPasswordSpray.ps1</a></td>
+<td>PowerShell password spraying tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/leoloobeek/LAPSToolkit">LAPSToolkit</a></td>
+<td>PowerShell toolkit leveraging PowerView to audit/attack LAPS environments.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ShawnDEvans/smbmap">smbmap</a></td>
+<td>SMB share enumeration tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/psexec.py">psexec.py</a></td>
+<td>Impacket PsExec-like remote execution tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/wmiexec.py">wmiexec.py</a></td>
+<td>Impacket tool for WMI-based remote command execution.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SnaffCon/Snaffler">Snaffler</a></td>
+<td>Finds sensitive information on accessible file shares.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/smbserver.py">smbserver.py</a></td>
+<td>Simple SMB server for file transfers.</td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-r2-and-2012/cc731241(v=ws.11)">setspn.exe</a></td>
+<td>SPN management utility.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ParrotSec/mimikatz">Mimikatz</a></td>
+<td>Extracts credentials, performs pass-the-hash, Kerberos ticket operations, etc.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/secretsdump.py">secretsdump.py</a></td>
+<td>Remote SAM &amp; LSA secrets dumper.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Hackplayers/evil-winrm">evil-winrm</a></td>
+<td>Interactive WinRM shell for Windows hosts.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/mssqlclient.py">mssqlclient.py</a></td>
+<td>Impacket MSSQL client for remote interaction.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Ridter/noPac">noPac.py</a></td>
+<td>CVE-2021-42278/42287 exploit for DA impersonation.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/rpcdump.py">rpcdump.py</a></td>
+<td>Impacket RPC endpoint mapper.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/cube0x0/CVE-2021-1675/blob/main/CVE-2021-1675.py">CVE-2021-1675.py</a></td>
+<td>PrintNightmare Proof of Concept.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/ntlmrelayx.py">ntlmrelayx.py</a></td>
+<td>SMB relay attack tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/topotam/PetitPotam">PetitPotam.py</a></td>
+<td>CVE-2021-36942 coercion attack PoC.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dirkjanm/PKINITtools/blob/master/gettgtpkinit.py">gettgtpkinit.py</a></td>
+<td>Certificate/TGT manipulation tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dirkjanm/PKINITtools/blob/master/getnthash.py">getnthash.py</a></td>
+<td>Retrieves PAC via U2U using an existing TGT.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/dirkjanm/adidnsdump">adidnsdump</a></td>
+<td>DNS enumeration tool for AD environments.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/t0thkr1s/gpp-decrypt">gpp-decrypt</a></td>
+<td>Extracts credentials from Group Policy Preferences.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/GetNPUsers.py">GetNPUsers.py</a></td>
+<td>ASREPRoasting tool for retrieving AS-REP hashes.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/lookupsid.py">lookupsid.py</a></td>
+<td>SID brute force enumeration tool.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/ticketer.py">ticketer.py</a></td>
+<td>Kerberos ticket creation/customization tool (Golden Tickets, trust attacks).</td>
+</tr>
+<tr>
+<td><a href="https://github.com/SecureAuthCorp/impacket/blob/master/examples/raiseChild.py">raiseChild.py</a></td>
+<td>Automates child-to-parent domain privilege escalation.</td>
+</tr>
+<tr>
+<td><a href="https://docs.microsoft.com/en-us/sysinternals/downloads/adexplorer">Active Directory Explorer</a></td>
+<td>AD viewer/editor supporting snapshots and comparison.</td>
+</tr>
+<tr>
+<td><a href="https://www.pingcastle.com/documentation/">PingCastle</a></td>
+<td>AD security auditing tool based on maturity/risk assessment.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/Group3r/Group3r">Group3r</a></td>
+<td>Audits GPO security misconfigurations.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/adrecon/ADRecon">ADRecon</a></td>
+<td>AD data extraction tool with Excel reporting for security analysis.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="disable-powershell-script-execution">Disable powershell script execution</h2>
+<pre><code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+</code></pre>
+<h2 id="bloodhound">BloodHound</h2>
+<pre><code>.\SharpHound.exe -c All --zipfilename &lt;filename&gt;
+</code></pre>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2025 Ispekis
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
