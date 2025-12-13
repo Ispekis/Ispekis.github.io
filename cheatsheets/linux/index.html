@@ -500,6 +500,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#download-python27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Download python2.7
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -713,6 +724,15 @@ subjectAltName = DNS:web.&lt;my-domain&gt;
 <p>Verify full chain:</p>
 <pre><code>cat ica.crt rca.crt &gt; chain.crt
 openssl verify -CAfile chain.crt web.crt
+</code></pre>
+<h2 id="download-python27">Download python2.7</h2>
+<pre><code>curl https://pyenv.run | bash
+echo 'export PYENV_ROOT=&quot;$HOME/.pyenv&quot;' &gt;&gt; ~/.bashrc
+echo 'command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;' &gt;&gt; ~/.bashrc
+echo 'eval &quot;$(pyenv init -)&quot;' &gt;&gt; ~/.bashrc
+source ~/.bashrc
+pyenv install 2.7
+pyenv shell 2.7
 </code></pre>
 
 

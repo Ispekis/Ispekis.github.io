@@ -558,6 +558,8 @@
 </table>
 <h2 id="disable-powershell-script-execution">Disable powershell script execution</h2>
 <pre><code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+# or
+Set-ExecutionPolicy bypass -Scope process
 </code></pre>
 <h2 id="bloodhound">BloodHound</h2>
 <pre><code>.\SharpHound.exe -c All --zipfilename &lt;filename&gt;
