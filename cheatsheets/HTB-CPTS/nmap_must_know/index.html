@@ -19,7 +19,7 @@
     
     
       
-        <title>Target Connection - My-Cyber-Knowledge</title>
+        <title>Nmap must know - My-Cyber-Knowledge</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#target-connection" class="md-skip">
+        <a href="#nmap-must-know" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Target Connection
+              Nmap must know
             
           </span>
         </div>
@@ -279,109 +279,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
+  <a href="#options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SSH
+        Options
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scanning-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scanning Options
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#winrm" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#output-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        WinRM
+        Output Options
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#smb" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#performance-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SMB
+        Performance Options
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#rdp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RDP
-      
-    </span>
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#smtp" class="md-nav__link">
+  <a href="#usefull-commands" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SMTP
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#imappop3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        IMAP/POP3
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mysql" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MYSQL
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#mssqlclient" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        MSSQLCLIENT
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#netexec" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NetExec
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ftp" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FTP
+        Usefull commands
       
     </span>
   </a>
@@ -407,57 +358,218 @@
 
 
 
-<h1 id="target-connection">Target Connection</h1>
-<h2 id="ssh">SSH</h2>
-<pre><code>ssh user@&lt;ip&gt;
+<h1 id="nmap-must-know">Nmap must know</h1>
+<h2 id="options">Options</h2>
+<h3 id="scanning-options">Scanning Options</h3>
+<table>
+<thead>
+<tr>
+<th>Nmap Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10.10.10.0/24</code></td>
+<td>Target network range</td>
+</tr>
+<tr>
+<td><code>-sn</code></td>
+<td>Disables port scanning</td>
+</tr>
+<tr>
+<td><code>-Pn</code></td>
+<td>Disables ICMP Echo Requests</td>
+</tr>
+<tr>
+<td><code>-n</code></td>
+<td>Disables DNS resolution</td>
+</tr>
+<tr>
+<td><code>-PE</code></td>
+<td>Performs a ping scan using ICMP Echo Requests</td>
+</tr>
+<tr>
+<td><code>--packet-trace</code></td>
+<td>Shows all packets sent and received</td>
+</tr>
+<tr>
+<td><code>--reason</code></td>
+<td>Displays the reason for a specific result</td>
+</tr>
+<tr>
+<td><code>--disable-arp-ping</code></td>
+<td>Disables ARP Ping Requests</td>
+</tr>
+<tr>
+<td><code>--top-ports &lt;num&gt;</code></td>
+<td>Scans the most frequently used ports</td>
+</tr>
+<tr>
+<td><code>-p-</code></td>
+<td>Scans all ports</td>
+</tr>
+<tr>
+<td><code>-p22-110</code></td>
+<td>Scans ports from 22 to 110</td>
+</tr>
+<tr>
+<td><code>-p22,25</code></td>
+<td>Scans only ports 22 and 25</td>
+</tr>
+<tr>
+<td><code>-F</code></td>
+<td>Scans the top 100 ports</td>
+</tr>
+<tr>
+<td><code>-sS</code></td>
+<td>Performs a TCP SYN scan</td>
+</tr>
+<tr>
+<td><code>-sA</code></td>
+<td>Performs a TCP ACK scan</td>
+</tr>
+<tr>
+<td><code>-sU</code></td>
+<td>Performs a UDP scan</td>
+</tr>
+<tr>
+<td><code>-sV</code></td>
+<td>Detects service versions</td>
+</tr>
+<tr>
+<td><code>-sC</code></td>
+<td>Runs default NSE scripts</td>
+</tr>
+<tr>
+<td><code>--script &lt;script&gt;</code></td>
+<td>Runs specified NSE scripts</td>
+</tr>
+<tr>
+<td><code>-O</code></td>
+<td>Performs OS detection</td>
+</tr>
+<tr>
+<td><code>-A</code></td>
+<td>Enables OS detection, service detection, and traceroute</td>
+</tr>
+<tr>
+<td><code>-D RND:5</code></td>
+<td>Uses 5 random decoys</td>
+</tr>
+<tr>
+<td><code>-e &lt;interface&gt;</code></td>
+<td>Specifies the network interface</td>
+</tr>
+<tr>
+<td><code>-S 10.10.10.200</code></td>
+<td>Specifies the source IP address</td>
+</tr>
+<tr>
+<td><code>-g &lt;port&gt;</code></td>
+<td>Specifies the source port</td>
+</tr>
+<tr>
+<td><code>--dns-server &lt;ns&gt;</code></td>
+<td>Uses a specified DNS server</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="output-options">Output Options</h3>
+<table>
+<thead>
+<tr>
+<th>Nmap Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-oA filename</code></td>
+<td>Saves output in all available formats</td>
+</tr>
+<tr>
+<td><code>-oN filename</code></td>
+<td>Saves output in normal format</td>
+</tr>
+<tr>
+<td><code>-oG filename</code></td>
+<td>Saves output in grepable format</td>
+</tr>
+<tr>
+<td><code>-oX filename</code></td>
+<td>Saves output in XML format</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="performance-options">Performance Options</h3>
+<table>
+<thead>
+<tr>
+<th>Nmap Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--max-retries &lt;num&gt;</code></td>
+<td>Sets the maximum number of retries per port</td>
+</tr>
+<tr>
+<td><code>--stats-every 5s</code></td>
+<td>Displays scan status every 5 seconds</td>
+</tr>
+<tr>
+<td><code>-v / -vv</code></td>
+<td>Enables verbose output</td>
+</tr>
+<tr>
+<td><code>--initial-rtt-timeout 50ms</code></td>
+<td>Sets the initial RTT timeout</td>
+</tr>
+<tr>
+<td><code>--max-rtt-timeout 100ms</code></td>
+<td>Sets the maximum RTT timeout</td>
+</tr>
+<tr>
+<td><code>--min-rate 300</code></td>
+<td>Minimum number of packets sent per second</td>
+</tr>
+<tr>
+<td><code>-T &lt;0-5&gt;</code></td>
+<td>Timing template (0 = paranoid, 5 = insane)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="usefull-commands">Usefull commands</h2>
+<p>Initial Scan - Standard Ports</p>
+<pre><code>nmap -n -v -sT -A &lt;IP&gt;
+nmap -n -v -sT -A -p &lt;additional_ports&gt; &lt;IP&gt;
 </code></pre>
-<h2 id="winrm">WinRM</h2>
-<pre><code>evil-winrm -i &lt;ip&gt; -u user -p password
+<p>Full TCP Port Scan</p>
+<pre><code>nmap -n -v -sT -p- -T5 &lt;IP&gt;
 </code></pre>
-<h2 id="smb">SMB</h2>
-<pre><code>smbclient -U user \\\\&lt;ip&gt;\\SHARENAME
+<p>Fast scan for OS and service detection</p>
+<pre><code>nmap -A -T4 &lt;ip&gt;
 </code></pre>
-<h2 id="rdp">RDP</h2>
-<pre><code>xfreerdp /v:&lt;ip&gt; /u:&lt;username&gt; /p:&lt;password&gt;
+<p>Vulnerability Scanning</p>
+<pre><code>nmap -n -v -sT -p &lt;all_found_ports&gt; --script vuln &lt;IP&gt;
+nmap -Pn --script vuln &lt;ip&gt;
 </code></pre>
-<h2 id="smtp">SMTP</h2>
-<pre><code>telnet &lt;ip&gt; 25
+<p>UDP Scanning</p>
+<pre><code># Quick UDP Scan
+nmap -n -v -sU &lt;IP&gt;
+# Full UDP Scan
+nmap -n -v -sU -p- -T5 &lt;IP&gt;
 </code></pre>
-<h2 id="imappop3">IMAP/POP3</h2>
-<pre><code>curl -k 'imaps://&lt;ip&gt;' --user &lt;username&gt;:&lt;password&gt;
-openssl s_client -connect &lt;ip&gt;:pop3s
-openssl s_client -connect &lt;ip&gt;:imaps
+<p>Firewall and IDS/IPS Evasion</p>
+<pre><code>nmap &lt;ip&gt; -sV -F -D RND:5 --max-retries=0 -T4 --source-port 53
 </code></pre>
-<h2 id="mysql">MYSQL</h2>
-<pre><code>mysql -u root -h &lt;ip&gt;
-mysql -u root -p&lt;password&gt; -h &lt;ip&gt;
-mysql -u root -p&lt;password&gt; -h &lt;ip&gt; -P &lt;port&gt;
-</code></pre>
-<h2 id="mssqlclient">MSSQLCLIENT</h2>
-<pre><code>python3 mssqlclient.py &lt;username&gt;@&lt;ip&gt; -windows-auth
-
-sqlcmd -S SRVMSSQL -U julio -P 'MyPassword!' -y 30 -Y 30
-</code></pre>
-<h2 id="netexec">NetExec</h2>
-<pre><code>sudo apt-get -y install netexec
-netexec &lt;proto&gt; &lt;target-IP&gt; -u &lt;user or userlist&gt; -p &lt;password or passwordlist&gt;
-
-Available Protocols:
-  {nfs,ftp,ssh,winrm,smb,wmi,rdp,mssql,ldap,vnc}
-    nfs                 own stuff using NFS
-    ftp                 own stuff using FTP
-    ssh                 own stuff using SSH
-    winrm               own stuff using WINRM
-    smb                 own stuff using SMB
-    wmi                 own stuff using WMI
-    rdp                 own stuff using RDP
-    mssql               own stuff using MSSQL
-    ldap                own stuff using LDAP
-    vnc                 own stuff using VNC
-</code></pre>
-<h2 id="ftp">FTP</h2>
-<pre><code>ftp -p &lt;ip&gt; &lt;port&gt;
-ftp ftp://&lt;username&gt;:&lt;password&gt;@&lt;ip&gt;
+<p>Firewall and IDS/IPS Evasion (DNS Misconfiguration)</p>
+<pre><code>
+nmap -sSU -p 53 --script dns-nsid &lt;ip&gt; -Pn -n --disable-arp-ping --packet-trace -D RND:50 --max-retries 50 --version-intensity 9 -sV
 </code></pre>
 
 
