@@ -15,7 +15,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -289,6 +289,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#persistent-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Persistent history
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -310,7 +321,13 @@
 
 <h1 id="windows-commands">Windows commands</h1>
 <h2 id="lists-every-file-and-folder-in-your-current-directory-and-all-subdirectories-beneath-it-sorted-by-size-with-the-largest-items-at-the-top">Lists every file and folder in your current directory and all subdirectories beneath it, sorted by size with the largest items at the top.</h2>
-<pre><code>Get-ChildItem -Recurse | Sort-Object Length -Descending
+<pre><code>Get-ChildItem -Recurse -File |
+Sort-Object Length -Descending |
+Select-Object Length, FullName
+</code></pre>
+<h2 id="persistent-history">Persistent history</h2>
+<pre><code>(Get-PSReadLineOption).HistorySavePath
+notepad (Get-PSReadLineOption).HistorySavePath
 </code></pre>
 
 
