@@ -272,6 +272,25 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wazuh-with-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Wazuh with docker
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -296,6 +315,16 @@
 <p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html</p>
 <p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html</p>
 <p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-macos.html</p>
+<h2 id="wazuh-with-docker">Wazuh with docker</h2>
+<pre><code>sudo apt install docker.io docker-compose git -y
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo git clone https://github.com/wazuh/wazuh-docker.git -b v4.14.4
+sudo cd wazuh-docker/single-node/
+sudo docker-compose -f generate-indexer-certs.yml run --rm generator
+sudo docker-compose up -d
+sudo docker ps
+</code></pre>
 
 
 

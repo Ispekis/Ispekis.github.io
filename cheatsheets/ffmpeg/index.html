@@ -322,6 +322,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#reduce-quality-of-a-video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reduce quality of a video
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -366,6 +377,16 @@
 </ul>
 <h2 id="convert-image">Convert image</h2>
 <pre><code>ffmpeg -i input.&lt;ext&gt; output.&lt;ext&gt;
+</code></pre>
+<h2 id="reduce-quality-of-a-video">Reduce quality of a video</h2>
+<pre><code># Reduce CSRF
+ffmpeg -i input.mp4 -vcodec libx264 -crf 28 output.mp4
+# Reduce resolution
+ffmpeg -i input.mp4 -vf scale=1280:720 output.mp4
+# Reduce bit rate
+ffmpeg -i input.mp4 -b:v 1000k output.mp4
+# Reduce frame rate
+ffmpeg -i input.mp4 -r 24 output.mp4
 </code></pre>
 
 

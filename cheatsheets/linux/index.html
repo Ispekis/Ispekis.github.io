@@ -511,6 +511,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#adding-new-sudoer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding new sudoer
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -733,6 +744,12 @@ echo 'eval &quot;$(pyenv init -)&quot;' &gt;&gt; ~/.bashrc
 source ~/.bashrc
 pyenv install 2.7
 pyenv shell 2.7
+</code></pre>
+<h2 id="adding-new-sudoer">Adding new sudoer</h2>
+<p>In file /etc/sudoers</p>
+<pre><code># User privilege specification
+root    ALL=(ALL:ALL) ALL
+&lt;user&gt;    ALL=(ALL:ALL) ALL
 </code></pre>
 
 
