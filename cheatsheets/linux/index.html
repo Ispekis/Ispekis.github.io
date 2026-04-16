@@ -412,22 +412,77 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-an-user" class="md-nav__link">
+  <a href="#user-and-groups" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create an user
+        User and groups
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Create an user">
+    <nav class="md-nav" aria-label="User and groups">
       <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-user" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create user
+      
+    </span>
+  </a>
+  
+</li>
         
           <li class="md-nav__item">
   <a href="#create-service-account" class="md-nav__link">
     <span class="md-ellipsis">
       
         Create service account
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete a group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-group" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a group
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manage-group-membership" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manage group membership
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-group_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delete a group
       
     </span>
   </a>
@@ -670,9 +725,48 @@ PasswordAuthentication no
 <p>You can configure a user's login shell by editing the <code>/etc/passwd</code> file. To allow shell access, specify a valid shell such as <code>/bin/bash</code>, <code>/bin/sh</code>, or any other available shell on the system.
 To prevent a user from logging in with a shell, set their shell to <code>/usr/sbin/nologin</code>.</p>
 <hr />
-<h2 id="create-an-user">Create an user</h2>
+<h2 id="user-and-groups">User and groups</h2>
+<h3 id="create-user">Create user</h3>
+<pre><code class="language-bash">useradd -m -s /bin/bash &lt;username&gt;
+
+# Add to supplementary groups
+useradd -m -s /bin/bash -G sudo,docker &lt;username&gt;
+
+# Set a specific UID manually
+useradd -m -s /bin/bash -G sudo,docker -u &lt;uid&gt; &lt;username&gt;
+</code></pre>
 <h3 id="create-service-account">Create service account</h3>
-<pre><code>useradd -d &lt;home_directory&gt; -s &lt;shell_path&gt; -r &lt;username&gt;
+<pre><code class="language-bash">useradd -r -s /usr/sbin/nologin -M &lt;username&gt;
+
+# With a working directory
+useradd -r -s /usr/sbin/nologin -M -d &lt;home_directory&gt; &lt;username&gt;
+</code></pre>
+<h3 id="delete-a-group">Delete a group</h3>
+<pre><code class="language-bash">userdel &lt;username&gt;
+
+</code></pre>
+<h3 id="create-a-group">Create a group</h3>
+<pre><code class="language-bash"># Regular group
+groupadd &lt;group&gt;
+
+# System group
+groupadd -r &lt;group&gt;
+</code></pre>
+<h3 id="manage-group-membership">Manage group membership</h3>
+<pre><code class="language-bash"># Add user to a group
+usermod -aG  &lt;username&gt;
+
+# Add user to multiple groups at once
+usermod -aG group1,group2,group3 &lt;username&gt;
+
+# Remove user from a group
+gpasswd -d &lt;username&gt; &lt;group&gt;
+
+# Set a user's primary group
+usermod -g &lt;group&gt; &lt;username&gt;
+</code></pre>
+<h3 id="delete-a-group_1">Delete a group</h3>
+<pre><code class="language-bash">groupdel &lt;group&gt;
 </code></pre>
 <hr />
 <h2 id="ssl">SSL</h2>
