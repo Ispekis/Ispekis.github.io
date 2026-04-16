@@ -19,7 +19,7 @@
     
     
       
-        <title>Wazuh - My-Cyber-Knowledge</title>
+        <title>SSH security - My-Cyber-Knowledge</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wazuh" class="md-skip">
+        <a href="#ssh-security" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Wazuh
+              SSH security
             
           </span>
         </div>
@@ -272,36 +272,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#wazuh-with-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Wazuh with docker
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#integration-with-shuffle-soar" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Integration with Shuffle (SOAR)
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -319,30 +289,31 @@
 
 
 
-<h1 id="wazuh">Wazuh</h1>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-indexer/step-by-step.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-server/step-by-step.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-dashboard/step-by-step.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-linux.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-windows.html</p>
-<p>https://documentation.wazuh.com/current/installation-guide/wazuh-agent/wazuh-agent-package-macos.html</p>
-<h2 id="wazuh-with-docker">Wazuh with docker</h2>
-<pre><code>sudo apt install docker.io docker-compose git -y
-sudo systemctl enable docker
-sudo systemctl start docker
-sudo git clone https://github.com/wazuh/wazuh-docker.git -b v4.14.4
-cd wazuh-docker/single-node/
-sudo docker-compose -f generate-indexer-certs.yml run --rm generator
-sudo docker-compose up -d
-sudo docker ps
+<h1 id="ssh-security">SSH security</h1>
+<p>Disable password-based login:</p>
+<pre><code>PasswordAuthentication no
 </code></pre>
-<h2 id="integration-with-shuffle-soar">Integration with Shuffle (SOAR)</h2>
-<p>https://wazuh.com/blog/integrating-wazuh-with-shuffle/</p>
-<pre><code>git clone https://github.com/frikky/Shuffle.git
-cd Shuffle
-sudo docker-compose up -d
+<p>Disable SSH login with the root user. This would make things easier for an attacker. You can also allow only specific users or groups:</p>
+<pre><code>PermitRootLogin no
+#AllowUsers user,user1
+AllowGroups sshusers
 </code></pre>
-<p>url : http://<ip>:3001/</p>
+<p>Disable forwarding — this prevents an attacker who has successfully compromised our server from easily pivoting to other servers, forwarding additional ports, or creating a tunnel:</p>
+<pre><code>AllowAgentForwarding no
+AllowStreamLocalForwarding no
+X11Forwarding no
+</code></pre>
+<p>Specify the listening address — this prevents an attacker coming through an unintended network interface from connecting to the machine:</p>
+<pre><code>AddressFamily inet
+ListenAddress 192.168.0.10
+</code></pre>
+<p>To reduce the attack surface, several options can be configured:</p>
+<pre><code>LoginGraceTime 2m
+StrictModes yes
+MaxAuthTries 3
+MaxSessions 3
+DebianBanner no
+</code></pre>
 
 
 

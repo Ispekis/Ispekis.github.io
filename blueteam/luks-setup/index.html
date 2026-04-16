@@ -19,7 +19,7 @@
     
     
       
-        <title>Linux notes - My-Cyber-Knowledge</title>
+        <title>Luks - My-Cyber-Knowledge</title>
       
     
     
@@ -68,7 +68,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#linux-notes" class="md-skip">
+        <a href="#luks" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Linux notes
+              Luks
             
           </span>
         </div>
@@ -279,10 +279,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-to-configure-a-hostname-on-a-linux" class="md-nav__link">
+  <a href="#partition-the-disk" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How to configure a hostname on a Linux
+        Partition the disk
       
     </span>
   </a>
@@ -290,22 +290,55 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#set-static-ip-address" class="md-nav__link">
+  <a href="#format-the-partition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Set static ip address
+        Format the partition
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Set static ip address">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mount-the-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mount the partition
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-uuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Get UUID
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#luks-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LUKS Setup
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LUKS Setup">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#check-what-your-network-manager" class="md-nav__link">
+  <a href="#install-required-packages" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Check what your network manager:
+        Install required packages
       
     </span>
   </a>
@@ -313,10 +346,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#dhcpcd" class="md-nav__link">
+  <a href="#create-the-keyfile" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DHCPCD
+        Create the keyfile
       
     </span>
   </a>
@@ -324,10 +357,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#networkmanager" class="md-nav__link">
+  <a href="#format-the-luks-partition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        NetworkManager
+        Format the LUKS partition
       
     </span>
   </a>
@@ -335,10 +368,43 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#manual-configuration-on-ubuntu-based-systems" class="md-nav__link">
+  <a href="#add-keyfile-to-existing-luks-partition" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Manual configuration (on Ubuntu-based systems)
+        Add keyfile to existing LUKS partition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-luks-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify LUKS partition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-decrypt-the-luks-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open (decrypt) the LUKS partition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#close-re-lock-the-luks-partition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Close (re-lock) the LUKS partition
       
     </span>
   </a>
@@ -351,22 +417,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#file-permissions" class="md-nav__link">
+  <a href="#etccrypttab" class="md-nav__link">
     <span class="md-ellipsis">
       
-        File permissions
+        /etc/crypttab
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="File permissions">
+    <nav class="md-nav" aria-label="/etc/crypttab">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#change-folder-owner" class="md-nav__link">
+  <a href="#crypttab-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Change folder owner
+        crypttab options
       
     </span>
   </a>
@@ -379,55 +445,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#configure-ssh-key-authentification-based" class="md-nav__link">
+  <a href="#etcfstab" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Configure SSH key authentification based
+        /etc/fstab
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#crontab" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Crontab
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-shell" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Connection shell
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-an-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Create an user
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Create an user">
+    <nav class="md-nav" aria-label="/etc/fstab">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#create-service-account" class="md-nav__link">
+  <a href="#fstab-options" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Create service account
+        fstab options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#update-initramfs-required-after-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Update initramfs (required after changes)
       
     </span>
   </a>
@@ -436,111 +480,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ssl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SSL
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSL">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#generate-ssl-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Generate ssl key
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rca" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RCA
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ica-intermediate-ca" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ICA (Intermediate CA)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ca-web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CA Web
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#download-python27" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Download python2.7
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#adding-new-sudoer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Adding new sudoer
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Environment
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#make-the-file-immutable-cannot-be-modified-or-deleted" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Make the file immutable (cannot be modified or deleted)
-      
-    </span>
-  </a>
   
 </li>
       
@@ -563,245 +502,216 @@
 
 
 
-<h1 id="linux-notes">Linux notes</h1>
-<h2 id="how-to-configure-a-hostname-on-a-linux">How to configure a hostname on a Linux</h2>
-<p>Modify the system's name temporarily</p>
-<pre><code>hostname demo.example.com
+<h1 id="luks">Luks</h1>
+<h2 id="partition-the-disk">Partition the disk</h2>
+<pre><code class="language-bash">fdisk /dev/sdX
 </code></pre>
-<p>Modify the system's name permanently</p>
-<pre><code>hostnamectl set-hostname demo.example.com
+<p>Useful fdisk commands:</p>
+<pre><code>   d   delete a partition
+   F   list free unpartitioned space
+   l   list known partition types
+   n   add a new partition
+   p   print the partition table
+   t   change a partition type
+   v   verify the partition table
+   i   print information about a partition
+   e   resize a partition
+   T   discard (trim) sectors
 </code></pre>
-<p>You can confirm this entry by displaying the <code>/etc/hostname</code> file contents.</p>
-<hr />
-<h2 id="set-static-ip-address">Set static ip address</h2>
-<h3 id="check-what-your-network-manager">Check what your network manager:</h3>
-<pre><code>ps aux | grep -E 'dhcpcd|NetworkManager|systemd-networkd'
+<h2 id="format-the-partition">Format the partition</h2>
+<pre><code class="language-bash">mkfs.ext4 -b 4096 /dev/sdX
 </code></pre>
-<h3 id="dhcpcd">DHCPCD</h3>
-<p>Edit the file in <code>/etc/dhcpcd.conf</code></p>
-<p>Add this section :</p>
-<pre><code>interface wlan0
-static ip_address=192.168.x.x/24
-static routers=192.168.x.x
+<h2 id="mount-the-partition">Mount the partition</h2>
+<pre><code class="language-bash">mount /dev/sdX &lt;directory&gt;
 </code></pre>
-<p>Restart or reboot:</p>
-<pre><code>sudo systemctl restart dhcpcd
-</code></pre>
-<h3 id="networkmanager">NetworkManager</h3>
-<p>Using <code>nmcli</code> :</p>
-<pre><code>nmcli connection show
-nmcli connection modify &lt;YourWifiConnection&gt; ipv4.method manual ipv4.addresses 192.168.x.x/24 ipv4.gateway 192.168.x.x
-nmcli connection modify &lt;YourWifiConnection&gt; ipv4.dns-priority -1
-nmcli connection down &lt;YourWifiConnection&gt; &amp;&amp; nmcli connection up &lt;YourWifiConnection&gt;
-</code></pre>
-<p>Mannualy :</p>
-<p>Edit the file in <code>/etc/NetworkManager/system-connections/&lt;YourWifiProfile&gt;</code></p>
-<p>In the [ipv4] section:</p>
-<pre><code>[ipv4]
-method=manual
-address1=192.168.x.x/24,192.168.x.x
-</code></pre>
-<p>Save and apply:</p>
-<pre><code>sudo chmod 600 /etc/NetworkManager/system-connections/MyWifiConnection.nmconnection
-sudo systemctl restart NetworkManager
-</code></pre>
-<h3 id="manual-configuration-on-ubuntu-based-systems">Manual configuration (on Ubuntu-based systems)</h3>
-<p>Edit the network configuration:</p>
-<pre><code>sudo nano /etc/network/interfaces
-</code></pre>
-<p>Add or modify the following lines:</p>
-<pre><code>allow-hotplug ethX
-iface ethX inet static
-    address 192.168.x.x
-    netmask 255.255.255.0
-    gateway 192.168.x.x
-</code></pre>
-<p>Restart networking:</p>
-<pre><code>sudo systemctl restart networking
+<h2 id="get-uuid">Get UUID</h2>
+<pre><code class="language-bash">lsblk -f
+# or
+blkid /dev/sdX
 </code></pre>
 <hr />
-<h2 id="file-permissions">File permissions</h2>
-<pre><code>drwxr-xr-x 2 owner group *.*K ****-**-** **:** docs
--rw-r--r-- 1 owner group *.*K ****-**-** **:** document.txt
-lrwxrwxrwx 2 owner group *.*K ****-**-** **:** team.docs
+<h2 id="luks-setup">LUKS Setup</h2>
+<h3 id="install-required-packages">Install required packages</h3>
+<pre><code class="language-bash">sudo apt install lvm2 cryptsetup cryptsetup-initramfs systemd-cryptsetup
 </code></pre>
-<p>File type ; User ; Group ; Everyone</p>
-<p>File types :</p>
-<ul>
-<li><code>d</code> Directory</li>
-<li><code>-</code> Regular file</li>
-<li><code>l</code> Symbolic Link</li>
-</ul>
-<p>Permissions digits :</p>
-<ul>
-<li><code>r</code> (read): 4</li>
-<li><code>w</code> (write): 2</li>
-<li><code>x</code> (execute): 1</li>
-</ul>
-<h3 id="change-folder-owner">Change folder owner</h3>
-<pre><code>chown -R &lt;user&gt;:&lt;group&gt; &lt;folder_path&gt;
+<h3 id="create-the-keyfile">Create the keyfile</h3>
+<pre><code class="language-bash">sudo mkdir -p /etc/luks
+sudo dd if=/dev/random of=/etc/luks/luks.key bs=1 count=256
 </code></pre>
-<hr />
-<h2 id="configure-ssh-key-authentification-based">Configure SSH key authentification based</h2>
-<p>Make sure your server have the file <code>.ssh/authorized_keys</code> in the home of the user.</p>
-<p>Generate a key for the client :</p>
-<pre><code>ssh-keygen -t ed25519 -C &quot;your_email@example.com&quot;
+<p>Secure the keyfile and directory — root only, immutable: <a href="../../cheatsheets/linux/#make-the-file-immutable-cannot-be-modified-or-deleted">Make the file immutable</a></p>
+<h3 id="format-the-luks-partition">Format the LUKS partition</h3>
+<p>Without keyfile (password prompt):</p>
+<pre><code class="language-bash">cryptsetup --verbose luksFormat /dev/sdX
 </code></pre>
-<p>You can then use <code>ssh-copy-id [-i &lt;key.pub&gt;] &lt;user&gt;@&lt;server_ip&gt;</code> to copy the key to the server authorized_keys</p>
-<p>In the server :
-Edit /etc/ssh/sshd_config:</p>
-<p>And change these :</p>
-<pre><code>...
-PubkeyAuthentication yes
-...
-AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
-...
-PasswordAuthentication no
-...
+<p>With keyfile:</p>
+<pre><code class="language-bash">cryptsetup --verbose --key-size=256 luksFormat /dev/sdX /etc/luks/part2.key
+</code></pre>
+<h3 id="add-keyfile-to-existing-luks-partition">Add keyfile to existing LUKS partition</h3>
+<pre><code class="language-bash">cryptsetup luksAddKey /dev/sdX /etc/luks/part2.key
+</code></pre>
+<h3 id="verify-luks-partition">Verify LUKS partition</h3>
+<pre><code class="language-bash">cryptsetup isLuks /dev/sdX &amp;&amp; echo &quot;Valid LUKS partition&quot;
+</code></pre>
+<h3 id="open-decrypt-the-luks-partition">Open (decrypt) the LUKS partition</h3>
+<p>Manually with password:</p>
+<pre><code class="language-bash">cryptsetup luksOpen /dev/sdX crypt_sdX
+</code></pre>
+<p>Automatically with keyfile:</p>
+<pre><code class="language-bash">cryptsetup luksOpen --key-file /etc/luks/part2.key /dev/sdX crypt_sdX
+</code></pre>
+<h3 id="close-re-lock-the-luks-partition">Close (re-lock) the LUKS partition</h3>
+<pre><code class="language-bash">umount /data_encrypted
+cryptsetup luksClose crypt_sdX
 </code></pre>
 <hr />
-<h2 id="crontab">Crontab</h2>
-<p>Create a crontab :</p>
-<pre><code>crontab -e
+<h2 id="etccrypttab">/etc/crypttab</h2>
+<p>Tells the system to decrypt the partition automatically at boot using the keyfile.</p>
+<pre><code># &lt;name&gt;        &lt;device&gt;                                    &lt;keyfile&gt;               &lt;options&gt;
+crypt_sdX      UUID=&lt;uuid-of-sdX&gt;                         /etc/luks/part2.key     luks
 </code></pre>
-<p>Path of crontabs is in <code>/var/spool/cron/crontabs</code>.</p>
-<hr />
-<h2 id="connection-shell">Connection shell</h2>
-<p>You can configure a user's login shell by editing the <code>/etc/passwd</code> file. To allow shell access, specify a valid shell such as <code>/bin/bash</code>, <code>/bin/sh</code>, or any other available shell on the system.
-To prevent a user from logging in with a shell, set their shell to <code>/usr/sbin/nologin</code>.</p>
-<hr />
-<h2 id="create-an-user">Create an user</h2>
-<h3 id="create-service-account">Create service account</h3>
-<pre><code>useradd -d &lt;home_directory&gt; -s &lt;shell_path&gt; -r &lt;username&gt;
+<p>Replace <code>&lt;uuid-of-sdX&gt;</code> with the UUID from <code>lsblk -f</code> or <code>blkid /dev/sdX</code>.</p>
+<pre><code>| Field | Description |
+|-------|-------------|
+| `name` | The mapper name — decrypted device will appear as `/dev/mapper/&lt;name&gt;` |
+| `device` | The raw encrypted partition, identified by UUID (recommended) or path like `/dev/sdX` |
+| `keyfile` | Path to the keyfile used to decrypt. Use `none` to prompt for a password at boot |
+| `options` | Comma-separated options (see below) |
 </code></pre>
+<h3 id="crypttab-options">crypttab options</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>luks</code></td>
+<td>Specifies the device is a LUKS-formatted partition (recommended, enables LUKS-specific handling)</td>
+</tr>
+<tr>
+<td><code>plain</code></td>
+<td>Use plain dm-crypt instead of LUKS (no header, no metadata)</td>
+</tr>
+<tr>
+<td><code>noauto</code></td>
+<td>Do not decrypt automatically at boot — must be opened manually</td>
+</tr>
+<tr>
+<td><code>noearly</code></td>
+<td>Decrypt late in the boot process, after mounts (useful for non-root partitions)</td>
+</tr>
+<tr>
+<td><code>readonly</code></td>
+<td>Open the device in read-only mode</td>
+</tr>
+<tr>
+<td><code>discard</code></td>
+<td>Enable TRIM/discard passthrough (improves SSD performance, slight security trade-off)</td>
+</tr>
+<tr>
+<td><code>tries=N</code></td>
+<td>Number of password attempts before failing (default: 3). Use <code>tries=0</code> for unlimited</td>
+</tr>
+<tr>
+<td><code>timeout=N</code></td>
+<td>Seconds to wait for a password before giving up</td>
+</tr>
+<tr>
+<td><code>keyfile-timeout=N</code></td>
+<td>Seconds to wait for the keyfile to become available (useful for keyfiles on USB drives)</td>
+</tr>
+<tr>
+<td><code>swap</code></td>
+<td>Format the device as swap after decryption (data is not preserved across reboots)</td>
+</tr>
+<tr>
+<td><code>tmp</code></td>
+<td>Format the device as a tmpfs after decryption (data is not preserved across reboots)</td>
+</tr>
+</tbody>
+</table>
 <hr />
-<h2 id="ssl">SSL</h2>
-<h3 id="generate-ssl-key">Generate ssl key</h3>
-<ul>
-<li>Key generation : <code>genpkey</code></li>
-<li>Certificat request : <code>req (-x509)</code></li>
-<li>Certificat signing : <code>x509</code></li>
-<li>Verify certification chain : <code>verify</code></li>
-</ul>
-<p>Note: Since 2016, Firefox has disabled the Domain Name; it must now be done with a SAN (v1).</p>
-<p>Model generation v3.</p>
-<h3 id="rca">RCA</h3>
-<p>Generate RCA key :</p>
-<pre><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out rca.key
+<h2 id="etcfstab">/etc/fstab</h2>
+<p>Tells the system to mount the decrypted partition automatically at boot.</p>
+<pre><code># &lt;device&gt;                      &lt;mountpoint&gt;        &lt;type&gt;  &lt;options&gt;   &lt;dump&gt;  &lt;pass&gt;
+/dev/mapper/crypt_sdX          /&lt;directory&gt;     ext4    defaults    0       1
 </code></pre>
-<p>Create RCA configuration :</p>
-<pre><code>[req]
-prompt = no
-distinguished_name = dn
-req_extensions = ext
+<pre><code>| Field | Description |
+|-------|-------------|
+| `device` | The decrypted mapper device from crypttab — always `/dev/mapper/&lt;name&gt;` |
+| `mountpoint` | Directory where the partition will be mounted |
+| `type` | Filesystem type: `ext4`, `xfs`, `btrfs`, etc. Use `auto` to detect automatically |
+| `options` | Mount options (see below) |
+| `dump` | Used by `dump` backup tool. Almost always `0` (disabled) |
+| `pass` | fsck check order at boot: `0` = skip, `1` = root partition only, `2` = check after root |
+</code></pre>
+<h3 id="fstab-options">fstab options</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>defaults</code></td>
+<td>Shorthand for <code>rw,suid,dev,exec,auto,nouser,async</code> — suitable for most use cases</td>
+</tr>
+<tr>
+<td><code>rw</code> / <code>ro</code></td>
+<td>Mount read-write or read-only</td>
+</tr>
+<tr>
+<td><code>noauto</code></td>
+<td>Do not mount automatically at boot — must be mounted manually with <code>mount -a</code></td>
+</tr>
+<tr>
+<td><code>nofail</code></td>
+<td>Do not fail boot if the device is missing or cannot be mounted</td>
+</tr>
+<tr>
+<td><code>noexec</code></td>
+<td>Prevent execution of binaries on this partition (good for data-only partitions)</td>
+</tr>
+<tr>
+<td><code>nosuid</code></td>
+<td>Ignore setuid/setgid bits (improves security on non-system partitions)</td>
+</tr>
+<tr>
+<td><code>nodev</code></td>
+<td>Prevent device files from being interpreted (recommended for non-root partitions)</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>Allow any user to mount the partition (implies <code>noexec</code>, <code>nosuid</code>, <code>nodev</code>)</td>
+</tr>
+<tr>
+<td><code>uid=N</code> / <code>gid=N</code></td>
+<td>Force ownership to a specific user/group ID (mainly for FAT/NTFS)</td>
+</tr>
+<tr>
+<td><code>umask=N</code></td>
+<td>Set default permissions mask (mainly for FAT/NTFS)</td>
+</tr>
+<tr>
+<td><code>discard</code></td>
+<td>Enable TRIM passthrough for SSDs (must also be enabled in crypttab)</td>
+</tr>
+<tr>
+<td><code>x-systemd.requires=</code></td>
+<td>Wait for a specific systemd unit before mounting (e.g. the cryptsetup service)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="update-initramfs-required-after-changes">Update initramfs (required after changes)</h3>
+<pre><code class="language-bash"># Debian/Ubuntu
+sudo update-initramfs -u
 
-[dn]
-CN = &lt;Commun Name&gt;
-O = &lt;Organization&gt;
-
-[ext]
-subjectAltName = DNS:*.&lt;my-domain&gt;
-</code></pre>
-<p>NB : You can precise DNS or IP</p>
-<p>Generate RCA certificat :</p>
-<pre><code>openssl req -x509 -key rca.key -out rca.crt -days 365 -config conf_rca
-</code></pre>
-<p>Check certificat:</p>
-<pre><code>openssl x509 -nout -text -in rca.crt
-</code></pre>
-<h3 id="ica-intermediate-ca">ICA (Intermediate CA)</h3>
-<p>Generate ICA key :</p>
-<pre><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out ica.key
-</code></pre>
-<p>Create ICA configuration :</p>
-<pre><code>[req]
-prompt = no
-distinguished_name = dn
-req_extensions = ext
-x509_extensions = ext
-
-[dn]
-CN = &lt;Commun Name&gt;
-O = &lt;Organization&gt;
-
-[ext]
-basicConstraints = CA:true
-subjectAltName = DNS:*.&lt;my-domain&gt;
-</code></pre>
-<p>On a ajouter x509_extensions = ext</p>
-<p>Generate ICA certificat :</p>
-<pre><code>openssl req -x509 -key ica.key -out ica.crt -CA rca.crt -CAkey rca.key -days 365 -config conf_ica
-</code></pre>
-<p>-CA : auto qui va signer ce cert</p>
-<p>Vertifier que la chaine est valide :</p>
-<pre><code>openssl verify -CAfile rca.crt ica.crt
-</code></pre>
-<p>Check certificat:</p>
-<pre><code>openssl x509 -nout -text -in ica.crt
-</code></pre>
-<h3 id="ca-web">CA Web</h3>
-<p>Generate CA key :</p>
-<pre><code>openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:4096 -out web.key
-</code></pre>
-<p>Create CA configuration :</p>
-<pre><code>[req]
-prompt = no
-distinguished_name = dn
-req_extensions = ext
-x509_extensions = ext
-
-[dn]
-CN = &lt;Commun Name&gt;
-O = &lt;Organization&gt;
-
-[ext]
-basicConstraints = CA:false
-subjectAltName = DNS:web.&lt;my-domain&gt;
-</code></pre>
-<p>Generate CA certificat :</p>
-<pre><code>openssl req -x509 -key web.key -out web.crt -CA ica.crt -CAkey ica.key -days 365 -config conf_web
-</code></pre>
-<p>Verify full chain:</p>
-<pre><code>cat ica.crt rca.crt &gt; chain.crt
-openssl verify -CAfile chain.crt web.crt
-</code></pre>
-<h2 id="download-python27">Download python2.7</h2>
-<pre><code>curl https://pyenv.run | bash
-echo 'export PYENV_ROOT=&quot;$HOME/.pyenv&quot;' &gt;&gt; ~/.bashrc
-echo 'command -v pyenv &gt;/dev/null || export PATH=&quot;$PYENV_ROOT/bin:$PATH&quot;' &gt;&gt; ~/.bashrc
-echo 'eval &quot;$(pyenv init -)&quot;' &gt;&gt; ~/.bashrc
-source ~/.bashrc
-pyenv install 2.7
-pyenv shell 2.7
-</code></pre>
-<h2 id="adding-new-sudoer">Adding new sudoer</h2>
-<hr />
-<p>In file /etc/sudoers</p>
-<pre><code># User privilege specification
-root    ALL=(ALL:ALL) ALL
-&lt;user&gt;    ALL=(ALL:ALL) ALL
-</code></pre>
-<hr />
-<h2 id="environment">Environment</h2>
-<p>Modify environment</p>
-<pre><code>/etc/environment
-</code></pre>
-<p>Modify personal environment</p>
-<pre><code>~/.profile
-</code></pre>
-<hr />
-<h2 id="make-the-file-immutable-cannot-be-modified-or-deleted">Make the file immutable (cannot be modified or deleted)</h2>
-<pre><code class="language-bash">sudo chown root:root /etc/luks/luks.key
-sudo chmod 400 /etc/luks/luks.key
-sudo chown root:root /etc/luks
-sudo chmod 700 /etc/luks
-sudo chattr +i /etc/luks/luks.key
-</code></pre>
-<p>Verify immutable flag (look for <code>i</code> in the output):</p>
-<pre><code class="language-bash">lsattr /etc/luks/luks.key
-</code></pre>
-<p>Remove immutable flag</p>
-<pre><code class="language-bash">sudo chattr -i /etc/luks/part2.key
+# Fedora/RHEL
+sudo dracut --force
 </code></pre>
 
 
